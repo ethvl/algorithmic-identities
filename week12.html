@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>A-I: Week 12</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.png" />
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+    <div class="page-shell">
+
+        <!-- FIXED LEFT NAV BAR -->
+        <aside class="left-rail">
+            <div class="site-title-block">
+                <div class="site-kicker"><a href="index.html">A-I: Algorithmic Identities</a></div>
+                <p class="site-description">
+                    A design-research project exploring how our digital identities are co-constructed by algorithms,
+                    shaping who we become online.
+                </p>
+            </div>
+
+            <!-- NAVIGATION -->
+            <nav class="nav-groups">
+                <div class="nav-group overview-group">
+                    <button class="nav-toggle" id="overviewToggle" aria-expanded="false">
+                        <span>SEM 1 / OVERVIEW</span>
+                        <span class="nav-toggle-symbol" id="overviewSymbol">+</span>
+                    </button>
+                    <ul class="overview-weeks">
+                        <li><a href="week1.html"><strong>W1</strong> : Prologue</a></li>
+                        <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
+                        <li><a href="week3.html"><strong>W3</strong> : Mindmap & E-1</a></li>
+                        <li><a href="week4.html"><strong>W4</strong> : RPO Plan & P-1</a></li>
+                        <li><a href="week5.html"><strong>W5</strong> : RPO Consult & RE-1</a></li>
+                        <li><a href="week6.html"><strong>W6</strong> : RPO Peer Reviews</a></li>
+                        <li><a href="week7.html"><strong>W7</strong> : Formative Assessment</a></li>
+                        <li><a href="week8.html"><strong>W8</strong> : E-2</a></li>
+                        <li><a href="week9.html"><strong>W9</strong> : ASM & AxiDraw</a></li>
+                        <li><a href="week10.html"><strong>W10</strong> : Task-Based Making</a></li>
+                        <li><a href="week11.html"><strong>W11</strong> : E-3 - 6</a></li>
+                        <li><a href="week12.html" class="active"><strong>W12</strong> : P-2</a></li>
+                        <li><a href="week13.html"><strong>W13</strong> : Cohort Presentation</a></li>
+                        <li><a href="week14.html"><strong>W14</strong> : P-3</a></li>
+                        <li><a href="week15.html"><strong>W15</strong> : E- 7 & P-14</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group"><a class="nav-link" href="catalogue.html">Catalogue of Making</a></div>
+                <div class="nav-group"><a class="nav-link" href="repository.html">Repository</a></div>
+                <div class="nav-group"><a class="nav-link" href="about.html">About</a></div>
+            </nav>
+
+            <div class="left-rail-footer">
+                © ETHEL LIM<br>
+                CiD / 2025
+            </div>
+        </aside>
+
+
+        <!-- RIGHT PANEL — TWO COLUMN CONTENT -->
+
+        <main class="right-panel">
+
+            <section class="catalogue-sidebar">
+                <h1><strong>Week 12</strong> / Prototype 2</h1>
+            </section>
+
+            <!-- ROW 4 — FULL WIDTH IMAGE -->
+            <section class="exp-row full">
+                <video src="/assets/videos/w12-hero-1.mp4" autoplay muted loop playsinline style="border-radius: 0px; border: 0;"></video>
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split">
+                <div class="exp-block">
+                    <h3><strong>Prototype 2: Encode Shape</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                    <!-- <div class="exp-block" style="overflow:hidden;">
+                        <video src="assets/videos/p2-visuals.mp4" autoplay muted loop playsinline alt=""
+                            style="width:100%; height:100%; object-fit:cover; flex:1; transform-origin:center; margin-bottom:20px; border: 0; transform: scale(1.0); margin-bottom: 30px;"></video>
+                    </div> -->
+                    <p style="margin-top: 0px;"><strong><em>What remains of our gestures once the system has finished
+                            interpreting us?</em></strong>
+                    </p>
+                    <p>This prototype began with that question, where I learnt how our expressions are converted into
+                        features, coordinates, and labelled datasets. I wanted to expose that hidden pipeline and turn
+                        the invisible work of datafication into an experience users could actually witness.</p>
+                    <p>In this experiment, I gave it rules where users are to draw five shapes, each with only five
+                        seconds, creating a fast-paced 25 second window of instinctive action. The time limit is
+                        <strong>intentional</strong> to mimic the everyday digital moments where we act sub-consciously,
+                        scrolling, tapping, pausing, while our micro-behaviours are continously captured.
+                    </p>
+                    <p>After drawing, the system performs a sequence of <strong>reductions</strong> that reveal how
+                        expressive marks are stripped down by computational logic:</p>
+                    <p><strong>⑴ Replay of All Five Shapes: </strong>Sketches reappear in scattered positions, showing
+                        how expressive marks become reproducible behavioural traces.</p>
+                    <p><strong>⑵ Stroke → Pixels:</strong> Smooth lines break into pixel blocks, exposing the system’s
+                        first layer of structural interpretation.</p>
+                    <p><strong>⑶ Pixels → Dots:</strong> The expressive mark collapses further into sparse points,
+                        reduced to coordinates, not meaning.</p>
+                    <p><strong>⑷ Dots → Encoded Text:</strong> Finally, everything becomes symbolised and compressed
+                        into text-like code, mirroring how algorithms store us as data strings.</p>
+                    <p>These transitions are deliberately abrupt rather than aesthetic. They dramatise the violence of
+                        reduction: the way organic, expressive human gestures are continuously flattened into
+                        abstractions so they can be categorised, sorted, and fed back into algorithmic systems.</p>
+                    <p><em>Read more about the algorithmic process breakdown in <strong>Prototype 2's Catalogue of
+                            Making.</strong></em></p>
+                    <!-- BUTTON ALIGNED TO LEFT, AT BOTTOM -->
+                    <a href="https://editor.p5js.org/ethel.limpy/full/C35BN7BaG" class="launch-btn"
+                        style="font-size: 14px; padding:6px 14px; margin-top:20px; display:inline-block;"
+                        target="_blank">
+                        Try Prototype 2
+                    </a>
+                    <!-- BUTTON: Link to Experiment 2's Catalogue of Making -->
+                    <a href="/prototype-p2.html" class="launch-btn-revert"
+                        style="font-size: 14px; padding:6px 14px; margin-top:20px; display:inline-block;">
+                        Catalogue of Making (Prototype 2)
+                    </a>
+                </div>
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split" style="margin-bottom: 60px;">
+                <div class="exp-block">
+                    <h3><strong>Initial Stages Output</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                </div>
+            </section>
+
+            <!-- 4 COLUMNS -->
+            <section class="exp-row cols-4">
+                <div class="exp-block"><img src="assets/images/identity_garden.png"></div>
+                <div class="exp-block"><img src="assets/images/identity_garden (2).png"></div>
+                <div class="exp-block"><img src="assets/images/identity_garden (3).png"></div>
+                <div class="exp-block"><img src="assets/images/identity_garden (5).png"></div>
+            </section>
+            <!-- 4 COLUMNS -->
+            <section class="exp-row cols-4" style="margin-top: -100px;">
+                <div class="exp-block"><img src="assets/images/identity_garden (8).png"></div>
+                <div class="exp-block"><img src="assets/images/identity_garden (9).png"></div>
+                <div class="exp-block"><img src="assets/images/identity_garden (10).png"></div>
+                <div class="exp-block"><img src="assets/images/identity_garden (1).png"></div>
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split">
+                <div class="exp-block">
+                    <h3><strong>Reworking the Visual Logic of Reduction</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                    <p>In the early stages of this prototype, the system simply populated the entire screen with the
+                        user’s five drawings once all shapes were completed. Visually, it was engaging, but conceptually
+                        it fell short. It showed repetition, not reduction. Nothing about that sequence revealed the
+                        core idea I was trying to explore: how human gestures are progressively stripped of meaning as
+                        they pass through computational processes.</p>
+                    <p>Returning to my readings on <strong>ASCII,</strong> symbolic encoding, and precedents like
+                        <strong>Rapoport’s Shoe-Field,</strong> I realised that I needed a more
+                        <strong>intentional</strong> visual structure: one that made the loss of information visible.
+                        This led to the <strong>four-stage reduction sequence</strong> I developed: <strong>Stroke →
+                            Pixels → Dots → Encoded Text.</strong>
+                    </p>
+                    <p><strong>⑴ Stroke</strong> represents the original, fully human gesture, the fluidity, speed, and
+                        nuance that only a person can create.</p>
+                    <p><strong>⑵ Pixels</strong> break that gesture into a grid, mimicking early digital capture
+                        technologies that compress curves into discrete units.</p>
+                    <p><strong>⑶ Dots</strong> further abstract the form, keeping only the most minimal structural
+                        anchors of the drawing—mirroring how systems often retain just “key features” instead of whole
+                        expressions.</p>
+                    <p><strong>⑷ Encoded Text</strong> is the final collapse of the gesture into pure symbolic
+                        representation. This choice came directly from my research into ASCII as a fundamental moment in
+                        computational reduction: the point where visual meaning had to be converted into alphanumeric
+                        codes to be machine-readable.</p>
+                    <p>I chose to encode the shape path as text because it mirrors the way our actions are ultimately
+                        stored as strings, logs, and tokens. The drawing no longer exists as an image but as a trace, a
+                        sequence, a dataset. This textual endpoint reveals the core provocation of the prototype:
+                        <strong><em>what remains of our gestures once the system has finished interpreting
+                                us?</em></strong>
+                    </p>
+                </div>
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split" style="margin-bottom: 60px;">
+                <div class="exp-block">
+                    <h3><strong>Final Output</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                </div>
+            </section>
+
+            <section class="exp-row cols-4">
+
+                <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
+                    <img src="assets/images/p2-09.jpg" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
+                        ⑴ Stroke
+                    </figcaption>
+                </figure>
+
+                <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
+                    <img src="assets/images/p2-10.jpg" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
+                        ⑵ Pixels
+                    </figcaption>
+                </figure>
+
+                <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column; ">
+                    <img src="assets/images/p2-11.jpg"
+                        style="width:100%; height:100%; object-fit:cover; object-position: center -30px; flex:1;">
+                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
+                        ⑶ Dots
+                    </figcaption>
+                </figure>
+
+                <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
+                    <img src="assets/images/p2-12.jpg" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
+                        ⑷ Encoded Text
+                    </figcaption>
+                </figure>
+
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split">
+                <div class="exp-block">
+                    <h3><strong>Challenges Faced</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                    <p><strong>⑴ Managing Multiple Phases in One System</strong><br> I devoted many hours trying to coordinate the four different states: <strong>countdown → draw → replay → reduction.</strong> Each phase required its own timing logic, UI behaviour, and rendering rules. I went through rounds of iterations to debug and ensure that the transitions didn't break.</p>
+                    <p><strong>⑵ Capturing User Strokes Accurately</strong><br> The strokes were not drawing accurately, it was laggy and off-alignment. I had to seek <strong>ChatGPT's</strong> help to ensure that the alignment is accurate. They overlay canvas has to store every point with timestamps, and avoid "breaks" in the line when users drew too quickly or too slowly.</p>
+                    <p><strong>⑶ Replaying All Shapes Simultaneously</strong><br> Initially, after users complete their drawings, it will just appear on the screen. However, after much though, I added the stroke replay function to make the "raw human input" visible before the system intervenes. Replaying them in sync required mapping thousands of timestamped points into a fixed 2-second animation window. It was challenging to ensure the shapes didn't "jump" or distort during replay.</p>
+                </div>
+            </section>
+
+            <!-- ROW 4 — FULL WIDTH VIDEO -->
+            <section class="exp-row full">
+                <div style="position:relative; width:100%; padding-bottom:2%; overflow:hidden;">
+                    <video src="assets/videos/p2-demo.mp4" autoplay muted loop playsinline></video>
+                </div>
+
+                <figcaption style="font-size: 12px; text-align: center;">
+                    <strong>Prototype 2 Demo</strong>
+                </figcaption>
+            </section>
+
+            <!-- BOTTOM-RIGHT FLOATING NAV BUTTONS -->
+            <div class="week-nav-controls">
+                <button class="week-nav-btn" id="prevWeek">←</button>
+                <button class="week-nav-btn" id="topBtn">↑</button>
+                <button class="week-nav-btn" id="nextWeek">→</button>
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ACCORDION SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            /* Get current week number from filename */
+            const current = parseInt(window.location.pathname.match(/week(\d+)\.html/)[1]);
+
+            /* Assign previous & next */
+            const prev = document.getElementById("prevWeek");
+            const next = document.getElementById("nextWeek");
+
+            /* Load previous week if exists */
+            prev.addEventListener("click", () => {
+                if (current > 1) {
+                    window.location.href = `week${current - 1}.html`;
+                }
+            });
+
+            /* Load next week if exists (assuming week12 max) */
+            next.addEventListener("click", () => {
+                if (current < 15) {
+                    window.location.href = `week${current + 1}.html`;
+                }
+            });
+
+            /* Scroll to top */
+            document.getElementById("topBtn").addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
+            const group = document.querySelector(".overview-group");
+            const btn = document.getElementById("overviewToggle");
+            const symbol = document.getElementById("overviewSymbol");
+
+            btn.setAttribute("aria-expanded", "false");
+            symbol.textContent = "+";
+
+            btn.addEventListener("click", () => {
+                const isOpen = group.classList.toggle("is-open");
+                btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                symbol.textContent = isOpen ? "−" : "+";
+            });
+        });
+    </script>
+
+</body>
+
+</html>

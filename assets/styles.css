@@ -1,0 +1,1545 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    background: #ffffff;
+    color: #222;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    font-weight: 300;
+    margin-top: 0;
+    color: #111;
+}
+
+h1 {
+    font-size: 32px;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+/* Body text */
+p,
+li,
+a,
+span {
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+/* -----------------------------------------
+   MAIN LAYOUT
+----------------------------------------- */
+
+.page-shell {
+    display: block;
+}
+
+/* -----------------------------------------
+   LEFT SIDEBAR (FIXED)
+----------------------------------------- */
+
+.left-rail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 240px;
+    padding: 24px;
+    /* This defines the TOP padding of the box */
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 0;
+    /* No unwanted spacing */
+}
+
+/* -----------------------------------------
+   TITLE BLOCK
+----------------------------------------- */
+
+.site-title-block {
+    margin: 0 !important;
+    /* NO extra offset */
+    padding: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    /* Controlled micro gap */
+}
+
+/* Site title (site-kicker) */
+.site-kicker {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+
+    margin: 0 !important;
+    /* CRITICAL: no spacing above or below */
+    padding: 0 !important;
+}
+
+.site-kicker a {
+    font-size: 15px;
+    /* bigger text */
+    font-weight: 800;
+    /* stronger */
+}
+
+/* Short description */
+.site-description {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.55;
+    max-width: 220px;
+    padding-bottom: 25px;
+    margin: 0;
+}
+
+/* -----------------------------------------
+   NAVIGATION GROUPS
+----------------------------------------- */
+
+.nav-groups {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 16px;
+    /* Controlled spacing BELOW title */
+    padding: 0;
+
+    gap: 10px;
+    /* Compact Cargo-like spacing */
+}
+
+.nav-group {
+    margin: 0;
+    padding: 0;
+}
+
+/* Overview toggle button */
+.nav-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+
+    color: #111;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-toggle-symbol {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+/* -----------------------------------------
+   OVERVIEW WEEK LIST
+----------------------------------------- */
+
+.overview-weeks {
+    list-style: none;
+    margin: 4px 0 0 12px;
+    padding: 0;
+
+    max-height: 360px;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+}
+
+.overview-group:not(.is-open) .overview-weeks {
+    max-height: 0;
+    margin-top: 0;
+}
+
+.overview-weeks li {
+    margin-bottom: 4px;
+}
+
+.overview-weeks a {
+    font-size: 12px;
+    color: #555;
+}
+
+.overview-weeks a:hover {
+    opacity: 0.5;
+}
+
+/* Other nav links */
+.nav-link {
+    font-size: 13px;
+    color: #111;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.nav-link:hover {
+    opacity: 0.7;
+}
+
+/* Footer pinned at bottom */
+.left-rail-footer {
+    font-size: 11px;
+    color: #888;
+    margin-top: auto;
+    padding-bottom: 4px;
+}
+
+/* -----------------------------------------
+   RIGHT CONTENT PANEL
+----------------------------------------- */
+
+.right-panel {
+    margin-left: 260px;
+    padding: 20px;
+    max-width: none;
+    /* REMOVE WIDTH LIMIT */
+    width: calc(100vw - 260px);
+    /* USE FULL AVAILABLE SPACE */
+    box-sizing: border-box;
+}
+
+/* -----------------------------------------
+   HOME PAGE TYPOGRAPHY
+----------------------------------------- */
+
+.hero-kicker {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 12px;
+}
+
+.hero-title {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 16px;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    max-width: 620px;
+    color: #444;
+    margin-bottom: 32px;
+}
+
+/* Image grid */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.image-grid-item {
+    background-color: #ddd;
+    aspect-ratio: 4/3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------
+   CATALOGUE â€” CIRCLE STYLES
+---------------------------------------------------------- */
+
+.catalogue-circles {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /* expands based on content */
+    margin-top: 30px;
+}
+
+/* Base circle */
+.catalogue-circle {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    /* border-radius: 50%; */
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    user-select: none;
+    z-index: 5;
+}
+
+/* Experiments */
+.catalogue-circle[data-type="experiment"] {
+    background: #111;
+    color: #fff;
+    border: none;
+}
+
+/* Prototypes */
+.catalogue-circle[data-type="prototype"] {
+    background: #fff;
+    color: #111;
+    border: 2px solid #111;
+}
+
+/* Dimmed when filtered */
+.catalogue-circle.muted {
+    opacity: 0.15 !important;
+}
+
+/* Hover emphasis */
+.catalogue-circle:hover {
+    opacity: 1 !important;
+}
+
+/* Hover emphasis */
+.catalogue-circle:hover {
+    opacity: 1 !important;
+}
+
+
+
+/* ----------------------------------------------------------
+   CATALOGUE â€” CENTER PREVIEW
+---------------------------------------------------------- */
+
+.circle-preview {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 520px;
+    height: 360px;
+    opacity: 0;
+    pointer-events: none;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 0.25s ease;
+    z-index: 20;
+    border: 1px solid #ddd;
+}
+
+.circle-preview.show {
+    opacity: 1;
+}
+
+
+/* ----------------------------------------------------------
+   CATALOGUE FILTERS
+---------------------------------------------------------- */
+
+.catalogue-filters {
+    position: fixed;
+    bottom: 24px;
+    left: calc(260px + 24px);
+    /* align with content, not navbar */
+    z-index: 30;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    display: flex;
+    gap: 22px;
+    cursor: pointer;
+}
+
+.catalogue-filter {
+    color: #999;
+    opacity: 0.6;
+}
+
+.catalogue-filter:hover {
+    opacity: 1;
+    color: #111;
+}
+
+.catalogue-filter.is-active {
+    color: #111;
+    opacity: 1;
+    text-decoration: underline;
+}
+
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------- */
+
+@media (max-width: 900px) {
+    .circle-preview {
+        width: 340px;
+        height: 240px;
+        left: 55%;
+    }
+}
+
+@media (max-width: 600px) {
+    .circle-preview {
+        width: 260px;
+        height: 180px;
+        left: 50%;
+    }
+}
+
+/* -----------------------------------------
+   OTHER PAGES (repository, about)
+----------------------------------------- */
+
+.section-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.section-body p {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #444;
+}
+
+/* ------------------------------
+   EXPERIMENT ROW LAYOUT (Cargo-style)
+------------------------------- */
+
+/* Base row container */
+.exp-row {
+    width: 100%;
+    margin-bottom: 16px;
+    display: block;
+}
+
+/* FULL-WIDTH LANDSCAPE IMAGE */
+.exp-row.full img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    /* ensures correct landscape ratio */
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+/* SPLIT ROW = 2 EVEN COLUMNS */
+.exp-row.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    align-items: start;
+}
+
+/* FLEXIBLE CONTENT BLOCK */
+.exp-block img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+/* TYPOGRAPHY */
+.exp-row h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.exp-row p {
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.exp-row.full img,
+.exp-block img,
+.exp-image img {
+    border-radius: 0 !important;
+}
+
+/* CATALOGUE */
+.catalogue-filters {
+    position: fixed;
+    bottom: 24px;
+    left: calc(260px + 24px);
+    /* aligns perfectly with the right-panel start */
+    z-index: 20;
+
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    gap: 22px;
+}
+
+.catalogue-filter {
+    cursor: pointer;
+    color: #999;
+    opacity: 0.6;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.catalogue-filter:hover {
+    opacity: 1;
+    color: #111;
+}
+
+/* Active (selected) filter */
+.catalogue-filter.is-active {
+    color: #111;
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* RESPONSIVE STACKING */
+@media (max-width: 900px) {
+    .exp-row.split {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+/* ----------------------------
+   4 COLUMNS
+----------------------------- */
+.exp-row.cols-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+.exp-row.cols-4 .exp-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    /* square shape - adjust as needed */
+    display: block;
+}
+
+
+/* ----------------------------
+   6 COLUMNS
+----------------------------- */
+.exp-row.cols-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+.exp-row.cols-6 .exp-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    display: block;
+}
+
+
+/* Responsive stacking */
+@media (max-width: 1200px) {
+    .exp-row.cols-6 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+
+    .exp-row.cols-4,
+    .exp-row.cols-6 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .exp-row.cols-4,
+    .exp-row.cols-6 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -----------------------------------------
+   RESPONSIVE (unchanged)
+----------------------------------------- */
+
+#left-panel {
+    width: 40vw;
+    height: 100vh;
+    padding: 40px;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+#sketch-container {
+    width: 60vw;
+    /* Your right side */
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    /* Removes default inline spacing */
+}
+
+/* ----------------------------------------------------------
+   HOMEPAGE-ONLY: CENTER THE ASCII SKETCH IN RIGHT PANEL
+   (will not affect other pages because it targets #home-panel)
+---------------------------------------------------------- */
+
+#home-panel #ascii-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    z-index: 10;
+}
+
+#home-panel #ascii-buttons button {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid black;
+    background: white;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#home-panel #ascii-buttons button:hover {
+    background: black;
+    color: white;
+}
+
+#home-panel #ascii-buttons button.active {
+    background: black;
+    color: white;
+}
+
+#home-panel.right-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    /* vertical */
+    align-items: center !important;
+    /* horizontal */
+    height: 100vh !important;
+    padding: 0 !important;
+}
+
+#home-panel #sketch-wrapper {
+    width: 50%;
+    /* adjust size here */
+    aspect-ratio: 16 / 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home-panel #sketch-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#home-panel #sketch-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#ascii-buttons {
+    position: absolute;
+    right: 40px;
+    /* anchor to right side */
+    top: 0;
+    width: 200px;
+    /* space they can appear inside */
+    height: 100%;
+    pointer-events: none;
+    /* allows clicks only on buttons */
+    z-index: 20;
+}
+
+/* Each button can receive clicks */
+#ascii-buttons button {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid black;
+    background: white;
+    font-size: 12px;
+    font-weight: 600;
+    pointer-events: auto;
+    /* re-enable clicking for the buttons */
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* FIX HORIZONTAL SCROLL ON EXPERIMENT PAGES */
+.right-panel {
+    overflow-x: hidden;
+}
+
+.exp-row.full img,
+.exp-block img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ----------------------------------------------------
+   GLOBAL FIX — Prevent ALL horizontal scrolling
+------------------------------------------------------*/
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+    position: relative;
+}
+
+/* ----------------------------------------------------
+   Right Panel Fix
+------------------------------------------------------*/
+.right-panel {
+    overflow-x: hidden !important;
+    max-width: calc(100vw - 260px) !important;
+}
+
+/* ----------------------------------------------------
+   Experiment Page Layout Fix
+------------------------------------------------------*/
+.exp-row,
+.exp-block,
+.split,
+.split>* {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+
+/* ----------------------------------------------------
+   Image overflow fix
+------------------------------------------------------*/
+img {
+    max-width: 100% !important;
+    height: auto;
+    display: block;
+}
+
+/* Home panel stack layout */
+#home-panel.right-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* centers the wrapper ONLY */
+}
+
+/* Make the instruction text match the sketch width */
+#sketch-instructions {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    /* semibold */
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    opacity: 0.85;
+    color: black;
+    margin-top: 0px;
+    pointer-events: none;
+    width: 70%;
+    /* match sketch-wrapper width */
+    max-width: 900px;
+    text-align: left;
+    padding-left: 40px;
+    /* optional small indent */
+}
+
+.nav-toggle span {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    /* or 700 for bold */
+}
+
+.overview-weeks a {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    /* 600 if you want heavier */
+}
+
+.nav-link {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+/* Align weeks exactly under the SEM 1 / OVERVIEW label */
+.overview-weeks {
+    list-style: none;
+    /* remove bullets */
+    margin: 0;
+    /* remove default top/bottom spacing */
+    padding-left: 0 !important;
+    /* remove left indent */
+}
+
+.overview-weeks li {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+.nav-toggle {
+    margin-bottom: 8px !important;
+    /* adjust value: 8px / 12px / 16px */
+}
+
+.overview-weeks a {
+    font-size: 12px !important;
+    /* try 16–18px */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    /* or 600 if you want heavier */
+    letter-spacing: 0.5px;
+}
+
+.right-panel:not(#home-panel) {
+    padding-right: 40px !important;
+    /* <-- adjust this value */
+    padding-left: 20px !important;
+    /* keep your desired left space */
+}
+
+.nav-groups a.active,
+.nav-groups button.active {
+    opacity: 0.35 !important;
+    pointer-events: none;
+    text-decoration: underline;
+}
+
+/* ───────────────────────────────────────────────
+   WEEK NAV BUTTONS — bottom right of right-panel
+────────────────────────────────────────────────── */
+
+.week-nav-controls {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 200;
+    display: flex;
+    gap: 10px;
+}
+
+.week-nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid black;
+    background: white;
+    color: black;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.week-nav-btn:hover {
+    background: black;
+    color: white;
+}
+
+/* 2×2 grid */
+.repo-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 40px;
+}
+
+/* Each column box */
+.repo-box {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Toggle (same as overview style) */
+.repo-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 4px 0;
+    text-align: left;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.repo-toggle-symbol {
+    font-size: 14px;
+}
+
+/* Collapsible content */
+.repo-content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.25s ease;
+    margin-top: 8px;
+}
+
+/* Item layout */
+.repo-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+/* UNIFORM REPOSITORY THUMBNAILS — match IF THEN book proportions */
+.repo-item img {
+    width: 120px;              /* keep your exact layout width */
+    height: 160px;             /* portrait ratio to match book covers */
+    object-fit: contain;       /* no cropping — entire cover visible */
+    background: #ffffff;       /* subtle neutral background frame */
+    display: block;
+}
+
+
+.repo-item h3 {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.repo-author {
+    font-size: 11px;
+    color: #777;
+    margin-bottom: 4px;
+}
+
+.repo-desc {
+    font-size: 12px;
+    color: #555;
+}
+
+.repo-box .repo-toggle {
+    font-size: 18px !important;
+    /* force larger */
+    font-weight: 600 !important;
+    /* force heavier */
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase;
+}
+
+.repo-box .repo-toggle-symbol {
+    font-size: 20px !important;
+    /* bigger + / - sign */
+    font-weight: 600 !important;
+}
+
+.catalogue-sidebar .detail-summary {
+    margin-bottom: 90px !important;
+    /* increase this value to your liking */
+}
+
+/* Each row (2 columns) */
+.repo-row {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* Each column inside row */
+.repo-col {
+    flex: 1;
+    /* equal width */
+    display: flex;
+    flex-direction: column;
+}
+
+.right-panel.about-page {
+    padding-top: 20px !important;
+    /* adjust the value */
+}
+
+#sketch-row {
+    display: flex;
+    gap: 24px;
+    /* spacing between sketches */
+    width: 100%;
+    margin-top: 0px;
+}
+
+.sketch-box {
+    flex: 1;
+    /* all 3 get equal width */
+    height: 300px;
+    /* set shared height */
+    background: #f2f2f2;
+    /* placeholder bg */
+    overflow: hidden;
+    /* hide overflow from p5 canvas */
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+.right-panel.index-page {
+    padding-right: 24px !important;
+    padding-top: 0px;
+}
+
+#camera-box {
+    width: 100%;
+    height: 600px;
+    background: #000;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+#camera-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+    /* mirror */
+}
+
+#mosaic-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+    width: 100%;
+}
+
+.mosaic-tile img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Remove space between the two <main> blocks on the index page */
+.right-panel+.right-panel.index-page {
+    margin-top: -40px !important;
+    /* adjust this value if needed */
+    padding-top: 0 !important;
+}
+
+/* Fix hover-preview image border and scaling */
+.circle-preview {
+    border: none !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-color: transparent !important;
+}
+
+.exp-row.full video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    /* match your image style */
+    object-fit: cover;
+}
+
+/* -----------------------------------------
+   EXPERIMENTS PAGE
+----------------------------------------- */
+
+.exp-block1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.exp-block1 h1 {
+    margin-top: -10px;
+}
+
+.exp-block1 img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* optional — read below */
+}
+
+.exp-block-character img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    /* optional — read below */
+}
+
+.exp-row.full figcaption {
+    font-size: 13px;
+    /* smaller text */
+    color: #666;
+    /* optional lighter colour */
+    padding-top: 12px;
+    /* space above the caption */
+    text-align: left;
+    /* or center if you prefer */
+    line-height: 1.4;
+    /* nicer readability */
+}
+
+.exp-row {
+    margin-bottom: 120px;
+}
+
+figure.exp-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+figure.exp-block figcaption {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    display: block;
+    font-size: 11px;
+    color: #666;
+    margin-top: 6px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.four-col-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding-bottom: 60px;
+    /* spacing between columns */
+    /* margin: 40px 0; */
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+.gallery-item video {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.gallery-item figcaption {
+    font-size: 12px;
+    color: #666;
+    margin-top: 6px;
+}
+
+/* Apply only to this specific playlist gallery */
+.playlist-gallery .gallery-item img {
+    height: 260px;
+    /* match jade-playlist.png height */
+    width: auto;
+    /* keep natural aspect ratio */
+    display: block;
+    margin: 0 auto;
+    /* center if width is smaller */
+}
+
+/* --------------------------------------------
+   MOBILE & TABLET: STACK SPLIT LAYOUT
+-------------------------------------------- */
+@media (max-width: 900px) {
+    .exp-row.split {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .exp-row.split .exp-block,
+    .exp-row.split .exp-block1 {
+        width: 100%;
+    }
+}
+
+/* Only target this gallery */
+.four-col-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+/* FIGURE */
+.four-col-gallery .gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* UNIFORM RESPONSIVE IMAGE BOX */
+.four-col-gallery .img-box {
+    width: 100%;
+    aspect-ratio: 1 / 1.25;
+    /* Adjust this ratio to match jade’s PNG */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* IMAGE */
+.four-col-gallery .img-box img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* CAPTION */
+.four-col-gallery figcaption {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+
+/* --------------------------------------------
+   LEFT NAV MOBILE BEHAVIOUR
+-------------------------------------------- */
+@media (max-width: 900px) {
+    .left-rail {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .right-panel {
+        margin-left: 0;
+        padding: 20px;
+    }
+}
+
+.exp-row.full video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.exp-row.full figcaption {
+    font-size: 13px;
+    padding-top: 10px;
+    color: #555;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .exp-row {
+        margin: 30px 0;
+    }
+}
+
+/* Reduce top padding of the gallery block right after it */
+.four-col-gallery {
+    margin-top: 200px;
+    /* reduce as needed */
+}
+
+/* Reduce top padding of the gallery block right after it */
+.four-col-gallery img {
+    border-radius: 0;
+}
+
+.circle-preview video,
+.circle-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.img-box video,
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    /* optional */
+}
+
+.exp-row.full video {
+    width: 100%;
+    border: 0.25px solid #000;
+    /* ← black stroke */
+    border-radius: 8px;
+    /* optional */
+    box-sizing: border-box;
+}
+
+/* ONLY for this prototype — Two-column layout */
+.two-col-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 💛 two equal columns */
+    gap: 20px;
+    /* spacing between items */
+    margin-bottom: 60px;
+}
+
+/* Optional: Make items align consistently */
+.two-col-gallery .gallery-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.proto-video-box {
+    width: 100%;
+    height: 320px;
+    /* adjust this number to scale the video */
+    overflow: hidden;
+    /* border-radius: 10px; */
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.proto-video-box video {
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+/* ascii */
+.ascii-video-box {
+    width: 100%;
+    height: 320px;
+    /* adjust this number to scale the video */
+    overflow: hidden;
+    /* border-radius: 10px; */
+    /* border: 2px solid #000; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.ascii-video-box video {
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+.ascii-video-box img {
+    border-radius: 0px;
+}
+
+/* text */
+.text-video-box {
+    width: 100%;
+    height: 320px;
+    /* adjust this number to scale the video */
+    overflow: hidden;
+    /* border-radius: 10px; */
+    /* border: 2px solid #000; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.text-video-box video {
+    transform: scale(1);
+    transform-origin: center;
+}
+
+.text-video-box img {
+    border-radius: 0px;
+    object-fit: cover;
+}
+
+.id-video-box img {
+    border-radius: 0px;
+    object-fit: cover;
+}
+
+@media (max-width: 900px) {
+    .two-col-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+.zoomable {
+    cursor: zoom-in;
+}
+
+.zoomed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+    transform: translate(-50%, -50%) scale(1);
+    cursor: zoom-out;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+
+/* gap e2 */
+/* ONLY for this prototype — Two-column layout */
+.two-col-gallery-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 💛 two equal columns */
+    gap: 20px;
+    /* spacing between items */
+    margin-bottom: 40px;
+}
+
+/* Optional: Make items align consistently */
+.two-col-gallery-2 .gallery-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.exp-row.two-col-gallery-2 {
+    margin-bottom: 300px;
+    /* adjust this number */
+}
+
+.launch-btn {
+    background: #000;
+    color: #fff;
+    padding: 14px 32px;
+    font-size: 18px;
+    text-decoration: none;
+    /* border-radius: 6px; */
+    border: 2px solid #000;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-right: 16px;
+}
+
+.launch-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+.cols-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* or whatever spacing your design uses */
+}
+
+.launch-btn-revert {
+    background: white;
+    color: black;
+    border: 1px solid black;
+    /* border-radius: 6px; */
+    transition: 0.25s ease;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.launch-btn-revert:hover {
+    background: black;
+    color: white;
+    border-color: black;
+}
+
+
+/* -----------------------------------------
+   RESPONSIVE (unchanged)
+----------------------------------------- */
+
+@media (max-width: 900px) {
+    .left-rail {
+        flex-direction: row;
+        height: auto;
+    }
+
+    .left-rail-footer {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .left-rail {
+        position: relative;
+        height: auto;
+    }
+
+    .right-panel {
+        margin-left: 0;
+    }
+}

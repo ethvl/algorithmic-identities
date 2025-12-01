@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>A-I: Algorithmic Identities</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.png" />
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/styles.css">
+
+    <!-- p5.js sketch -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <script src="https://unpkg.com/ml5@0.12.2/dist/ml5.min.js"></script>
+    <script src="js/ascii.js"></script>
+</head>
+
+<body>
+
+    <!-- PAGE WRAPPER -->
+    <div class="page-shell">
+
+        <!-- FIXED LEFT NAVIGATION -->
+        <aside class="left-rail">
+
+            <div class="site-title-block">
+                <div class="site-kicker">
+                    <a href="index.html">A-I: Algorithmic Identities</a>
+                </div>
+                <p class="site-description">
+                    A design-research project exploring how our digital identities are co-constructed by algorithms,
+                    shaping who we become online.
+                </p>
+            </div>
+
+            <nav class="nav-groups">
+
+                <div class="nav-group overview-group">
+                    <button class="nav-toggle" id="overviewToggle" aria-expanded="false">
+                        <span>SEM 1 / OVERVIEW</span>
+                        <span class="nav-toggle-symbol" id="overviewSymbol">+</span>
+                    </button>
+
+                    <ul class="overview-weeks">
+                        <li><a href="week1.html"><strong>W1</strong> : Prologue</a></li>
+                        <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
+                        <li><a href="week3.html"><strong>W3</strong> : Mindmap & E-1</a></li>
+                        <li><a href="week4.html"><strong>W4</strong> : RPO Plan & P-1</a></li>
+                        <li><a href="week5.html"><strong>W5</strong> : RPO Consult & RE-1</a></li>
+                        <li><a href="week6.html"><strong>W6</strong> : RPO Peer Reviews</a></li>
+                        <li><a href="week7.html"><strong>W7</strong> : Formative Assessment</a></li>
+                        <li><a href="week8.html"><strong>W8</strong> : E-2</a></li>
+                        <li><a href="week9.html"><strong>W9</strong> : ASM & AxiDraw</a></li>
+                        <li><a href="week10.html"><strong>W10</strong> : Task-Based Making</a></li>
+                        <li><a href="week11.html"><strong>W11</strong> : E-3 - 6</a></li>
+                        <li><a href="week12.html"><strong>W12</strong> : P-2</a></li>
+                        <li><a href="week13.html"><strong>W13</strong> : Cohort Presentation</a></li>
+                        <li><a href="week14.html"><strong>W14</strong> : P-3</a></li>
+                        <li><a href="week15.html"><strong>W15</strong> : E- 7 & P-14</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <a class="nav-link" href="catalogue.html">Catalogue of Making</a>
+                </div>
+
+                <div class="nav-group">
+                    <a class="nav-link" href="repository.html">Repository</a>
+                </div>
+
+                <div class="nav-group">
+                    <a class="nav-link" href="about.html">About</a>
+                </div>
+
+            </nav>
+
+            <div class="left-rail-footer">
+                © ETHEL LIM<br>
+                CiD / 2025
+            </div>
+
+        </aside>
+
+        <!-- RIGHT PANEL CONTENT -->
+
+        <main class="right-panel">
+            <section class="catalogue-sidebar">
+                <h1 style="font-size: 100px; line-height: 80px; font-weight: bold; letter-spacing: -10px; margin-top: 10px;"><strong>SMILE! THE ALG<span style="color: red; font-size: 90px; margin-right: -12px;">◉</span>RITHM IS WATCHING.</strong></h1>
+                <p style="margin-top: -60px;">Everything you do becomes data. Even the things you never meant to share.</p>
+            </section>
+        </main>
+        <main class="right-panel index-page">
+            <div id="camera-box" style="margin-top: -550px;"></div>
+            <div id="mosaic-container"></div>
+        </main>
+
+    </div>
+
+
+    <!-- ACCORDION SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const group = document.querySelector(".overview-group");
+            const toggleBtn = document.getElementById("overviewToggle");
+            const symbol = document.getElementById("overviewSymbol");
+
+            if (!group || !toggleBtn || !symbol) return;
+
+            toggleBtn.setAttribute("aria-expanded", "false");
+            symbol.textContent = "+";
+
+            toggleBtn.addEventListener("click", () => {
+                const isOpen = group.classList.toggle("is-open");
+                toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                symbol.textContent = isOpen ? "−" : "+";
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const cameraBox = document.getElementById("camera-box");
+            const mosaicContainer = document.getElementById("mosaic-container");
+
+            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                .then(stream => {
+                    const vid = document.createElement("video");
+                    vid.autoplay = true;
+                    vid.muted = true;
+                    vid.srcObject = stream;
+                    cameraBox.appendChild(vid);
+
+                    // every 10 seconds → snapshot
+                    setInterval(() => takeSnapshot(stream), 1000);
+                })
+                .catch(err => {
+                    console.error("Camera error:", err);
+                });
+
+
+            function takeSnapshot(stream) {
+                const track = stream.getVideoTracks()[0];
+                const imageCapture = new ImageCapture(track);
+
+                imageCapture.grabFrame().then(bitmap => {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = bitmap.width;
+                    canvas.height = bitmap.height;
+
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(bitmap, 0, 0);
+
+                    const imgURL = canvas.toDataURL("image/png");
+                    addToMosaic(imgURL);
+                });
+            }
+
+            function addToMosaic(url) {
+                const tile = document.createElement("div");
+                tile.className = "mosaic-tile";
+
+                const img = document.createElement("img");
+                img.src = url;
+
+                tile.appendChild(img);
+                mosaicContainer.appendChild(tile);
+            }
+
+        });
+    </script>
+
+
+</body>
+
+</html>
