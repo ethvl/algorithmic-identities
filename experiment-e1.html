@@ -16,7 +16,7 @@
         <!-- FIXED LEFT NAV BAR -->
         <aside class="left-rail">
             <div class="site-title-block">
-                <div class="site-kicker" ><a href="index.html">A-I: Algorithmic Identities</a></div>
+                <div class="site-kicker"><a href="index.html">A-I: Algorithmic Identities</a></div>
                 <p class="site-description">
                     A design-research project exploring how our digital identities are co-constructed by algorithms,
                     shaping who we become online.
@@ -26,10 +26,36 @@
             <!-- NAVIGATION -->
             <nav class="nav-groups">
                 <div class="nav-group overview-group">
-                    <button class="nav-toggle" id="overviewToggle" aria-expanded="false">
+                    <button class="nav-toggle" aria-expanded="false">
                         <span>SEM 1 / OVERVIEW</span>
-                        <span class="nav-toggle-symbol" id="overviewSymbol">+</span>
+                        <span class="nav-toggle-symbol">+</span>
                     </button>
+
+                    <ul class="overview-weeks">
+                        <li><a href="week1.html"><strong>W1</strong> : Prologue</a></li>
+                        <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
+                        <li><a href="week3.html"><strong>W3</strong> : Mindmap & E-1</a></li>
+                        <li><a href="week4.html"><strong>W4</strong> : RPO Plan & P-1</a></li>
+                        <li><a href="week5.html"><strong>W5</strong> : RPO Consult & RE-1</a></li>
+                        <li><a href="week6.html"><strong>W6</strong> : RPO Peer Reviews</a></li>
+                        <li><a href="week7.html"><strong>W7</strong> : Formative Assessment</a></li>
+                        <li><a href="week8.html"><strong>W8</strong> : E-2</a></li>
+                        <li><a href="week9.html"><strong>W9</strong> : ASM & AxiDraw</a></li>
+                        <li><a href="week10.html"><strong>W10</strong> : Task-Based Making</a></li>
+                        <li><a href="week11.html"><strong>W11</strong> : E-3 - 6</a></li>
+                        <li><a href="week12.html"><strong>W12</strong> : P-2</a></li>
+                        <li><a href="week13.html"><strong>W13</strong> : Cohort Presentation</a></li>
+                        <li><a href="week14.html"><strong>W14</strong> : P-3</a></li>
+                        <li><a href="week15.html"><strong>W15</strong> : E- 7 & P-14</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group overview-group">
+                    <button class="nav-toggle" aria-expanded="false">
+                        <span>SEM 2 / OVERVIEW</span>
+                        <span class="nav-toggle-symbol">+</span>
+                    </button>
+
                     <ul class="overview-weeks">
                         <li><a href="week1.html"><strong>W1</strong> : Prologue</a></li>
                         <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
@@ -75,7 +101,8 @@
             <!-- ROW 2 — SPLIT ROW -->
             <section class="catalogue-sidebar">
                 <h1><strong>Experiment 1</strong> / Playlist Visualiser</h1><br>
-                <h1 style="font-size: 100px; line-height: 80px; font-weight: bold; letter-spacing: -10px;">What does my music say about me when it is reduced, encoded, and visualised as data?</h1>
+                <h1 style="font-size: 100px; line-height: 80px; font-weight: bold; letter-spacing: -10px;">What does my
+                    music say about me when it is reduced, encoded, and visualised as data?</h1>
             </section>
 
             <h1></h1>
@@ -93,7 +120,8 @@
                         A playlist is more than just a list of songs. It is a map of moods, habits, and intimate
                         rhythms. When platforms <strong>extract these signals as data</strong>, they become part of our
                         digital identity,
-                        a computational profile built not from what we say, but from what we listen to.<br><br><strong>Playlist
+                        a computational profile built not from what we say, but from what we listen
+                        to.<br><br><strong>Playlist
                             visualiser</strong>
                         translates a Spotify playlist into a composite visual identity. The system extracts features
                         from the uploaded playlist URL and transforms them into a shifting field of orbs to visualise
@@ -272,17 +300,22 @@
     <!-- ACCORDION SCRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const group = document.querySelector(".overview-group");
-            const btn = document.getElementById("overviewToggle");
-            const symbol = document.getElementById("overviewSymbol");
+            document.querySelectorAll(".overview-group").forEach(group => {
+                const toggleBtn = group.querySelector(".nav-toggle");
+                const symbol = group.querySelector(".nav-toggle-symbol");
 
-            btn.setAttribute("aria-expanded", "false");
-            symbol.textContent = "+";
+                if (!toggleBtn || !symbol) return;
 
-            btn.addEventListener("click", () => {
-                const isOpen = group.classList.toggle("is-open");
-                btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-                symbol.textContent = isOpen ? "−" : "+";
+                // init closed
+                group.classList.remove("is-open");
+                toggleBtn.setAttribute("aria-expanded", "false");
+                symbol.textContent = "+";
+
+                toggleBtn.addEventListener("click", () => {
+                    const isOpen = group.classList.toggle("is-open");
+                    toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                    symbol.textContent = isOpen ? "−" : "+";
+                });
             });
         });
     </script>

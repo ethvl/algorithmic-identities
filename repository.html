@@ -25,10 +25,36 @@
 
             <nav class="nav-groups">
                 <div class="nav-group overview-group">
-                    <button class="nav-toggle" id="overviewToggle" aria-expanded="false">
+                    <button class="nav-toggle" aria-expanded="false">
                         <span>SEM 1 / OVERVIEW</span>
-                        <span class="nav-toggle-symbol" id="overviewSymbol">+</span>
+                        <span class="nav-toggle-symbol">+</span>
                     </button>
+
+                    <ul class="overview-weeks">
+                        <li><a href="week1.html"><strong>W1</strong> : Prologue</a></li>
+                        <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
+                        <li><a href="week3.html"><strong>W3</strong> : Mindmap & E-1</a></li>
+                        <li><a href="week4.html"><strong>W4</strong> : RPO Plan & P-1</a></li>
+                        <li><a href="week5.html"><strong>W5</strong> : RPO Consult & RE-1</a></li>
+                        <li><a href="week6.html"><strong>W6</strong> : RPO Peer Reviews</a></li>
+                        <li><a href="week7.html"><strong>W7</strong> : Formative Assessment</a></li>
+                        <li><a href="week8.html"><strong>W8</strong> : E-2</a></li>
+                        <li><a href="week9.html"><strong>W9</strong> : ASM & AxiDraw</a></li>
+                        <li><a href="week10.html"><strong>W10</strong> : Task-Based Making</a></li>
+                        <li><a href="week11.html"><strong>W11</strong> : E-3 - 6</a></li>
+                        <li><a href="week12.html"><strong>W12</strong> : P-2</a></li>
+                        <li><a href="week13.html"><strong>W13</strong> : Cohort Presentation</a></li>
+                        <li><a href="week14.html"><strong>W14</strong> : P-3</a></li>
+                        <li><a href="week15.html"><strong>W15</strong> : E- 7 & P-14</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-group overview-group">
+                    <button class="nav-toggle" aria-expanded="false">
+                        <span>SEM 2 / OVERVIEW</span>
+                        <span class="nav-toggle-symbol">+</span>
+                    </button>
+
                     <ul class="overview-weeks">
                         <li><a href="week1.html"><strong>W1</strong> : Prologue</a></li>
                         <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
@@ -73,7 +99,9 @@
 
                 <!-- LEFT COLUMN -->
                 <section class="catalogue-sidebar">
-                    <h1 style="font-size: 100px; line-height: 80px; font-weight: bold; letter-spacing: -10px; margin-top: 10px;">Rep<span style="color: red; font-size: 70px; margin-right: -12px;">◉</span>sitory</h1>
+                    <h1
+                        style="font-size: 100px; line-height: 80px; font-weight: bold; letter-spacing: -10px; margin-top: 10px;">
+                        Rep<span style="color: red; font-size: 70px; margin-right: -12px;">◉</span>sitory</h1>
                     <p class="detail-summary" style="margin-top: -30px;">
                         A structured archive of books, articles, case studies, and experiments that shape
                         the conceptual and methodological grounding of <strong>A-I: Algorithmic Identities</strong>.
@@ -597,35 +625,56 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
-            /* LEFT RAIL ACCORDION */
-            const group = document.querySelector(".overview-group");
-            const btn = document.getElementById("overviewToggle");
-            const symbol = document.getElementById("overviewSymbol");
+            /* LEFT RAIL: SEM 1 / SEM 2 accordions */
+            document.querySelectorAll(".overview-group").forEach(group => {
+                const toggleBtn = group.querySelector(".nav-toggle");
+                const symbol = group.querySelector(".nav-toggle-symbol");
+                const list = group.querySelector(".overview-weeks"); // optional, for maxHeight animation
 
-            btn.setAttribute("aria-expanded", "false");
-            symbol.textContent = "+";
+                if (!toggleBtn || !symbol) return;
 
-            btn.addEventListener("click", () => {
-                const isOpen = group.classList.toggle("is-open");
-                btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-                symbol.textContent = isOpen ? "−" : "+";
+                // init closed
+                group.classList.remove("is-open");
+                toggleBtn.setAttribute("aria-expanded", "false");
+                symbol.textContent = "+";
+
+                toggleBtn.addEventListener("click", () => {
+                    const isOpen = group.classList.toggle("is-open");
+                    toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                    symbol.textContent = isOpen ? "−" : "+";
+                });
             });
 
 
-            /* REPOSITORY COLUMN ACCORDIONS */
-            document.querySelectorAll(".repo-toggle").forEach(toggle => {
-                const content = toggle.nextElementSibling;
-                const symbol = toggle.querySelector(".repo-toggle-symbol");
+            /* REPOSITORY: Books / Articles / Case Studies / Experiments / Media */
+            document.querySelectorAll(".repo-box").forEach(box => {
+                const toggle = box.querySelector(".repo-toggle");
+                const content = box.querySelector(".repo-content");
+                const symbol = box.querySelector(".repo-toggle-symbol");
+
+                if (!toggle || !content || !symbol) return;
+
+                // init closed
+                content.classList.remove("open");
+                content.style.maxHeight = "0px";
+                symbol.textContent = "+";
 
                 toggle.addEventListener("click", () => {
-                    const expanded = content.classList.toggle("open");
-                    content.style.maxHeight = expanded ? content.scrollHeight + "px" : "0px";
-                    symbol.textContent = expanded ? "−" : "+";
+                    const isOpen = content.classList.toggle("open");
+                    symbol.textContent = isOpen ? "−" : "+";
+
+                    // animate height
+                    if (isOpen) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = "0px";
+                    }
                 });
             });
 
         });
     </script>
+
 
 </body>
 

@@ -26,11 +26,10 @@
             <!-- NAVIGATION -->
             <nav class="nav-groups">
                 <div class="nav-group overview-group">
-                    <button class="nav-toggle" aria-expanded="false">
+                    <button class="nav-toggle" id="overviewToggle" aria-expanded="false">
                         <span>SEM 1 / OVERVIEW</span>
-                        <span class="nav-toggle-symbol">+</span>
+                        <span class="nav-toggle-symbol" id="overviewSymbol">+</span>
                     </button>
-
                     <ul class="overview-weeks">
                         <li><a href="week1.html" class="active"><strong>W1</strong> : Prologue</a></li>
                         <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
@@ -51,13 +50,12 @@
                 </div>
 
                 <div class="nav-group overview-group">
-                    <button class="nav-toggle" aria-expanded="false">
+                    <button class="nav-toggle" id="overviewToggle" aria-expanded="false">
                         <span>SEM 2 / OVERVIEW</span>
-                        <span class="nav-toggle-symbol">+</span>
+                        <span class="nav-toggle-symbol" id="overviewSymbol">+</span>
                     </button>
-
                     <ul class="overview-weeks">
-                        <li><a href="week1.html"><strong>W1</strong> : Prologue</a></li>
+                        <li><a href="week1.html" class="active"><strong>W1</strong> : Prologue</a></li>
                         <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
                         <li><a href="week3.html"><strong>W3</strong> : Mindmap & E-1</a></li>
                         <li><a href="week4.html"><strong>W4</strong> : RPO Plan & P-1</a></li>
@@ -179,28 +177,6 @@
 
 
     <!-- ACCORDION SCRIPT -->
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll(".overview-group").forEach(group => {
-                const toggleBtn = group.querySelector(".nav-toggle");
-                const symbol = group.querySelector(".nav-toggle-symbol");
-
-                if (!toggleBtn || !symbol) return;
-
-                // init closed
-                group.classList.remove("is-open");
-                toggleBtn.setAttribute("aria-expanded", "false");
-                symbol.textContent = "+";
-
-                toggleBtn.addEventListener("click", () => {
-                    const isOpen = group.classList.toggle("is-open");
-                    toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-                    symbol.textContent = isOpen ? "−" : "+";
-                });
-            });
-        });
-    </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
