@@ -961,10 +961,14 @@ img {
 
 /* UNIFORM REPOSITORY THUMBNAILS — match IF THEN book proportions */
 .repo-item img {
-    width: 120px;              /* keep your exact layout width */
-    height: 160px;             /* portrait ratio to match book covers */
-    object-fit: contain;       /* no cropping — entire cover visible */
-    background: #ffffff;       /* subtle neutral background frame */
+    width: 120px;
+    /* keep your exact layout width */
+    height: 160px;
+    /* portrait ratio to match book covers */
+    object-fit: contain;
+    /* no cropping — entire cover visible */
+    background: #ffffff;
+    /* subtle neutral background frame */
     display: block;
 }
 
@@ -1498,7 +1502,8 @@ figure.exp-block figcaption {
 .cols-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px; /* or whatever spacing your design uses */
+    gap: 20px;
+    /* or whatever spacing your design uses */
 }
 
 .launch-btn-revert {
@@ -1515,6 +1520,28 @@ figure.exp-block figcaption {
     background: black;
     color: white;
     border-color: black;
+}
+
+/*lightbox image*/
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.handwritten {
+    font-family: "Just Me Again Down Here", cursive;
 }
 
 
