@@ -7,25 +7,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.png" />
 
-    <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-    <!-- Main CSS -->
     <link rel="stylesheet" href="assets/styles.css">
 
-    <!-- p5.js sketch -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-    <script src="https://unpkg.com/ml5@0.12.2/dist/ml5.min.js"></script>
-    <script src="js/ascii.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+    <style>
+        /* Essential styling for the animation container */
+        #animation-container {
+            width: 100%;
+            height: 100vh; /* Fill the right panel */
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        #loading-info {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #888;
+            font-family: monospace;
+            pointer-events: none;
+            z-index: 10;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+        
+        /* Ensure right panel doesn't scroll excessively */
+        .right-panel.index-page {
+            overflow: hidden;
+            padding: 0 !important; /* Remove padding to let canvas touch edges */
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- PAGE WRAPPER -->
     <div class="page-shell">
 
-        <!-- FIXED LEFT NAVIGATION -->
         <aside class="left-rail">
 
             <div class="site-title-block">
@@ -39,30 +64,16 @@
             </div>
 
             <nav class="nav-groups">
-
                 <div class="nav-group overview-group">
                     <button class="nav-toggle" aria-expanded="false">
                         <span>SEM 1 / OVERVIEW</span>
                         <span class="nav-toggle-symbol">+</span>
                     </button>
-
                     <ul class="overview-weeks">
                         <li><a href="week1.html"><strong>W1</strong> : Prologue</a></li>
                         <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
                         <li><a href="week3.html"><strong>W3</strong> : Mindmap & E-1</a></li>
-                        <li><a href="week4.html"><strong>W4</strong> : RPO Plan & P-1</a></li>
-                        <li><a href="week5.html"><strong>W5</strong> : RPO Consult & RE-1</a></li>
-                        <li><a href="week6.html"><strong>W6</strong> : RPO Peer Reviews</a></li>
-                        <li><a href="week7.html"><strong>W7</strong> : Formative Assessment</a></li>
-                        <li><a href="week8.html"><strong>W8</strong> : E-2</a></li>
-                        <li><a href="week9.html"><strong>W9</strong> : ASM & AxiDraw</a></li>
-                        <li><a href="week10.html"><strong>W10</strong> : Task-Based Making</a></li>
-                        <li><a href="week11.html"><strong>W11</strong> : E-3 - 6</a></li>
-                        <li><a href="week12.html"><strong>W12</strong> : P-2</a></li>
-                        <li><a href="week13.html"><strong>W13</strong> : Cohort Presentation</a></li>
-                        <li><a href="week14.html"><strong>W14</strong> : P-3</a></li>
-                        <li><a href="week15.html"><strong>W15</strong> : E- 7 & P-14</a></li>
-                    </ul>
+                        </ul>
                 </div>
 
                 <div class="nav-group overview-group">
@@ -70,38 +81,20 @@
                         <span>SEM 2 / OVERVIEW</span>
                         <span class="nav-toggle-symbol">+</span>
                     </button>
-
                     <ul class="overview-weeks">
-                        <li><a href="s2-week1.html"><strong>W1</strong> : Progress Review</a></li>
-                        <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
-                        <li><a href="week3.html"><strong>W3</strong> : Mindmap & E-1</a></li>
-                        <li><a href="week4.html"><strong>W4</strong> : RPO Plan & P-1</a></li>
-                        <li><a href="week5.html"><strong>W5</strong> : RPO Consult & RE-1</a></li>
-                        <li><a href="week6.html"><strong>W6</strong> : RPO Peer Reviews</a></li>
-                        <li><a href="week7.html"><strong>W7</strong> : Formative Assessment</a></li>
-                        <li><a href="week8.html"><strong>W8</strong> : E-2</a></li>
-                        <li><a href="week9.html"><strong>W9</strong> : ASM & AxiDraw</a></li>
-                        <li><a href="week10.html"><strong>W10</strong> : Task-Based Making</a></li>
-                        <li><a href="week11.html"><strong>W11</strong> : E-3 - 6</a></li>
-                        <li><a href="week12.html"><strong>W12</strong> : P-2</a></li>
-                        <li><a href="week13.html"><strong>W13</strong> : Cohort Presentation</a></li>
-                        <li><a href="week14.html"><strong>W14</strong> : P-3</a></li>
-                        <li><a href="week15.html"><strong>W15</strong> : E- 7 & P-14</a></li>
-                    </ul>
+                         <li><a href="s2-week1.html"><strong>W1</strong> : Progress Review</a></li>
+                         </ul>
                 </div>
 
                 <div class="nav-group">
                     <a class="nav-link" href="catalogue.html">Catalogue of Making</a>
                 </div>
-
                 <div class="nav-group">
                     <a class="nav-link" href="repository.html">Repository</a>
                 </div>
-
                 <div class="nav-group">
                     <a class="nav-link" href="about.html">About</a>
                 </div>
-
             </nav>
 
             <div class="left-rail-footer">
@@ -111,28 +104,15 @@
 
         </aside>
 
-        <!-- RIGHT PANEL CONTENT -->
-
-        <main class="right-panel">
-            <section class="catalogue-sidebar">
-                <h1
-                    style="font-size: 100px; line-height: 80px; font-weight: bold; letter-spacing: -10px; margin-top: 10px;">
-                    <strong>SMILE! THE ALG<span style="color: red; font-size: 90px; margin-right: -12px;">◉</span>RITHM
-                        IS WATCHING.</strong>
-                </h1>
-                <p style="margin-top: -60px;">Everything you do becomes data. Even the things you never meant to share.
-                </p>
-            </section>
-        </main>
         <main class="right-panel index-page">
-            <div id="camera-box" style="margin-top: -550px;"></div>
-            <div id="mosaic-container"></div>
+            <div id="animation-container">
+                <div id="loading-info">INITIALIZING SYSTEM...</div>
+            </div>
         </main>
 
     </div>
 
 
-    <!-- ACCORDION SCRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".overview-group").forEach(group => {
@@ -141,7 +121,6 @@
 
                 if (!toggleBtn || !symbol) return;
 
-                // init closed
                 group.classList.remove("is-open");
                 toggleBtn.setAttribute("aria-expanded", "false");
                 symbol.textContent = "+";
@@ -156,58 +135,309 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        // --- CONFIGURATION ---
+        const MASONRY_GRID_SIZE = 45; 
+        const VOXEL_SIZE = 12;        
+        const VOXEL_GAP = 1;          
+        
+        // YOUR IMAGE URL
+        const TARGET_IMAGE_URL = 'assets/images/Kate Bush by Fresno.jpeg'; 
 
-            const cameraBox = document.getElementById("camera-box");
-            const mosaicContainer = document.getElementById("mosaic-container");
+        const IMAGE_URLS = [
+            'https://picsum.photos/id/106/200/200', 
+            'https://picsum.photos/id/700/200/200',
+            'https://picsum.photos/id/189/200/200',
+            'https://picsum.photos/id/348/200/200',
+            'https://picsum.photos/id/453/200/200',
+            'https://picsum.photos/id/542/200/200',
+            'https://picsum.photos/id/564/200/200',
+            'https://picsum.photos/id/487/200/200',
+        ];
 
-            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-                .then(stream => {
-                    const vid = document.createElement("video");
-                    vid.autoplay = true;
-                    vid.muted = true;
-                    vid.srcObject = stream;
-                    cameraBox.appendChild(vid);
+        // --- 1. IMAGE SAMPLER ---
+        function sampleImage(imageObj) {
+            const w = 100; 
+            const aspect = imageObj.width / imageObj.height;
+            const h = Math.floor(w / aspect);
+            const canvas = document.createElement('canvas');
+            canvas.width = w; canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(imageObj, 0, 0, w, h);
+            const imgData = ctx.getImageData(0,0, w, h).data;
+            const targets = [];
+            const offX = -(w * (VOXEL_SIZE + VOXEL_GAP)) / 2;
+            const offY = (h * (VOXEL_SIZE + VOXEL_GAP)) / 2;
 
-                    // every 10 seconds → snapshot
-                    setInterval(() => takeSnapshot(stream), 1000);
-                })
-                .catch(err => {
-                    console.error("Camera error:", err);
-                });
+            for(let y=0; y<h; y++) {
+                for(let x=0; x<w; x++) {
+                    const i = (y*w + x) * 4;
+                    const brightness = (imgData[i] + imgData[i+1] + imgData[i+2]) / 3;
 
+                    if (brightness > 50) { 
+                        targets.push({
+                            x: offX + (x * (VOXEL_SIZE + VOXEL_GAP)),
+                            y: offY - (y * (VOXEL_SIZE + VOXEL_GAP)),
+                            z: 0, 
+                            color: new THREE.Color(`rgb(${imgData[i]},${imgData[i+1]},${imgData[i+2]})`)
+                        });
+                    }
+                }
+            }
+            return targets;
+        }
 
-            function takeSnapshot(stream) {
-                const track = stream.getVideoTracks()[0];
-                const imageCapture = new ImageCapture(track);
+        // --- 2. TEXT SAMPLER ---
+        function sampleText() {
+            const w = 250; 
+            const h = 100;
+            const canvas = document.createElement('canvas');
+            canvas.width = w; canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0,0,w,h);
+            ctx.font = 'bold 24px Arial'; 
+            ctx.fillStyle = 'white'; 
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            ctx.fillText("ALGORITHMIC", w/2, h/2 - 15);
+            ctx.fillText("IDENTITIES", w/2, h/2 + 15);
 
-                imageCapture.grabFrame().then(bitmap => {
-                    const canvas = document.createElement("canvas");
-                    canvas.width = bitmap.width;
-                    canvas.height = bitmap.height;
+            const imgData = ctx.getImageData(0,0, w, h).data;
+            const targets = [];
+            const offX = -(w * (VOXEL_SIZE + VOXEL_GAP)) / 2;
+            const offY = (h * (VOXEL_SIZE + VOXEL_GAP)) / 2;
 
-                    const ctx = canvas.getContext("2d");
-                    ctx.drawImage(bitmap, 0, 0);
+            for(let y=0; y<h; y++) {
+                for(let x=0; x<w; x++) {
+                    if (imgData[(y*w + x) * 4] > 128) { 
+                        targets.push({
+                            x: offX + (x * (VOXEL_SIZE + VOXEL_GAP)),
+                            y: offY - (y * (VOXEL_SIZE + VOXEL_GAP)),
+                            z: 0
+                        });
+                    }
+                }
+            }
+            return targets;
+        }
 
-                    const imgURL = canvas.toDataURL("image/png");
-                    addToMosaic(imgURL);
-                });
+        function init(faceTargets, textTargets) {
+            // TARGET THE CONTAINER, NOT THE WINDOW
+            const container = document.getElementById('animation-container');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xffffff);
+            scene.fog = new THREE.Fog(0xffffff, 800, 3000);
+
+            const camera = new THREE.PerspectiveCamera(50, width / height, 1, 5000);
+            camera.position.set(0, 0, 1600);
+            camera.lookAt(0, 0, 0);
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(width, height);
+            renderer.shadowMap.enabled = true; 
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            
+            // Append canvas to our container
+            container.appendChild(renderer.domElement);
+
+            const lightKey = new THREE.DirectionalLight(0xffffff, 1.0);
+            lightKey.position.set(200, 500, 600);
+            lightKey.castShadow = true;
+            lightKey.shadow.mapSize.width = 2048;
+            lightKey.shadow.mapSize.height = 2048;
+            scene.add(lightKey);
+            
+            const lightFill = new THREE.DirectionalLight(0x4444ff, 0.3); 
+            lightFill.position.set(-500, 100, 200);
+            scene.add(lightFill);
+            scene.add(new THREE.AmbientLight(0x606060)); 
+
+            const textureLoader = new THREE.TextureLoader();
+            const loadedTextures = IMAGE_URLS.map(url => {
+                textureLoader.setCrossOrigin('anonymous'); 
+                return textureLoader.load(url);
+            });
+
+            const geometry = new THREE.BoxGeometry(1, 1, 1); 
+            const materialCache = loadedTextures.map(tex => new THREE.MeshStandardMaterial({
+                map: tex, roughness: 0.5, metalness: 0.0, color: 0xffffff
+            }));
+
+            // Use container dimensions for grid calculation
+            const cols = Math.ceil(width / MASONRY_GRID_SIZE) + 2;
+            const rows = Math.ceil(height / MASONRY_GRID_SIZE) + 2;
+            const totalScreenSlots = cols * rows; 
+            const TOTAL_PARTICLES = Math.max(faceTargets.length, totalScreenSlots, textTargets.length);
+            
+            const gridMap = new Array(cols * rows).fill(false);
+            function checkAndOccupy(c, r, w, h) {
+                if (c + w > cols || r + h > rows) return false;
+                for (let i = 0; i < w; i++) for (let j = 0; j < h; j++) if (gridMap[(r + j) * cols + (c + i)]) return false;
+                for (let i = 0; i < w; i++) for (let j = 0; j < h; j++) gridMap[(r + j) * cols + (c + i)] = true;
+                return true;
             }
 
-            function addToMosaic(url) {
-                const tile = document.createElement("div");
-                tile.className = "mosaic-tile";
+            const particles = [];
+            const group = new THREE.Group();
+            scene.add(group);
 
-                const img = document.createElement("img");
-                img.src = url;
+            const shuffledFaceIndices = Array.from({length: faceTargets.length}, (_, i) => i).sort(() => Math.random() - 0.5);
+            const shuffledTextIndices = Array.from({length: textTargets.length}, (_, i) => i).sort(() => Math.random() - 0.5);
 
-                tile.appendChild(img);
-                mosaicContainer.appendChild(tile);
+            for(let i=0; i<TOTAL_PARTICLES; i++) {
+                const w = Math.random() > 0.85 ? 2 : 1;
+                const h = Math.random() > 0.85 ? 2 : 1;
+                let c = Math.floor(Math.random() * cols);
+                let r = Math.floor(Math.random() * rows);
+                
+                if (!checkAndOccupy(c, r, w, h)) {
+                    let found = false;
+                    for(let rr=0; rr<rows && !found; rr++) {
+                        for(let cc=0; cc<cols && !found; cc++) {
+                            if(checkAndOccupy(cc, rr, w, h)) { c=cc; r=rr; found=true; }
+                        }
+                    }
+                }
+
+                // Adjust positioning to center based on container size
+                const startX = (c * MASONRY_GRID_SIZE) + (w * MASONRY_GRID_SIZE)/2 - (cols * MASONRY_GRID_SIZE)/2;
+                const startY = -((r * MASONRY_GRID_SIZE) + (h * MASONRY_GRID_SIZE)/2) + (rows * MASONRY_GRID_SIZE)/2;
+                
+                const mat = materialCache[Math.floor(Math.random() * materialCache.length)].clone(); 
+                const mesh = new THREE.Mesh(geometry, mat);
+                
+                mesh.position.set(startX, startY, 0);
+                mesh.scale.set(w * MASONRY_GRID_SIZE - 2, h * MASONRY_GRID_SIZE - 2, 5);
+                mesh.castShadow = true;
+                mesh.receiveShadow = true;
+
+                const isFace = i < faceTargets.length;
+                const faceIndex = isFace ? shuffledFaceIndices[i] : -1;
+                const isText = isFace && (i < textTargets.length);
+                const textIndex = isText ? shuffledTextIndices[i] : -1;
+
+                mesh.userData = {
+                    isFace: isFace,
+                    isText: isText,
+                    faceTarget: isFace ? faceTargets[faceIndex] : null,
+                    textTarget: isText ? textTargets[textIndex] : null,
+                };
+                group.add(mesh);
+                particles.push(mesh);
             }
 
-        });
+            const tl = gsap.timeline({ repeat: -1, repeatDelay: 2, yoyo: true });
+
+            // WAIT
+            tl.to({}, { duration: 1.5 });
+
+            // PHASE 1: GRID -> FACE
+            const faceParticles = particles.filter(p => p.userData.isFace);
+            const noiseParticles = particles.filter(p => !p.userData.isFace);
+
+            tl.to(faceParticles.map(p => p.scale), {
+                duration: 1.5, x: VOXEL_SIZE, y: VOXEL_SIZE, z: 5, ease: "power2.inOut"
+            }, "toFace");
+            
+            tl.to(faceParticles.map(p => p.material.color), {
+                duration: 1.5,
+                r: i => faceParticles[i].userData.faceTarget.color.r,
+                g: i => faceParticles[i].userData.faceTarget.color.g,
+                b: i => faceParticles[i].userData.faceTarget.color.b,
+                ease: "power2.inOut"
+            }, "toFace");
+
+            tl.to(noiseParticles.map(p => p.position), {
+                duration: 1.5, y: "-=1000", z: "-=500", ease: "power2.in"
+            }, "toFace");
+            tl.to(noiseParticles.map(p => p.material), {
+                duration: 1.0, opacity: 0, ease: "power2.in"
+            }, "toFace");
+
+            tl.to(faceParticles.map(p => p.position), {
+                duration: 1.8,
+                x: i => faceParticles[i].userData.faceTarget.x,
+                y: i => faceParticles[i].userData.faceTarget.y,
+                z: i => faceParticles[i].userData.faceTarget.z,
+                ease: "power3.inOut",
+                stagger: { amount: 0.5, from: "random" }
+            }, "formFace");
+            
+            tl.to(faceParticles.map(p => p.rotation), {
+                duration: 2.0, x: 0, y: 0, z: 0, ease: "power2.out"
+            }, "formFace");
+
+            // WAIT
+            tl.to({}, { duration: 3.0 });
+
+            // PHASE 2: FACE -> TEXT
+            const textParticles = particles.filter(p => p.userData.isText);
+            const leftoverFaceParticles = particles.filter(p => p.userData.isFace && !p.userData.isText);
+
+            tl.to(textParticles.map(p => p.position), {
+                duration: 2.0,
+                x: i => textParticles[i].userData.textTarget.x,
+                y: i => textParticles[i].userData.textTarget.y,
+                z: 0,
+                ease: "power4.inOut", 
+                stagger: { amount: 0.5, from: "center" }
+            }, "toText");
+
+            // REVEAL IMAGES ON TEXT
+            tl.to(textParticles.map(p => p.material.color), {
+                duration: 2.0,
+                r: 1, g: 1, b: 1, 
+                ease: "power2.inOut"
+            }, "toText");
+
+            tl.to(leftoverFaceParticles.map(p => p.material), {
+                duration: 1.0, opacity: 0, ease: "power2.out"
+            }, "toText");
+            tl.to(leftoverFaceParticles.map(p => p.scale), {
+                duration: 1.0, x: 0, y: 0, ease: "power2.out"
+            }, "toText");
+
+            // WAIT
+            tl.to({}, { duration: 3.0 });
+
+
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+            animate();
+            document.getElementById('loading-info').style.display = 'none';
+
+            // HANDLE RESIZE (Targeting Container)
+            window.addEventListener('resize', () => {
+                const newWidth = container.clientWidth;
+                const newHeight = container.clientHeight;
+                camera.aspect = newWidth / newHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(newWidth, newHeight);
+                // Note: Full reload is usually cleaner for masonry recalculation
+                // location.reload(); 
+            });
+        }
+
+        const userImg = new Image();
+        userImg.crossOrigin = "Anonymous"; 
+        userImg.src = TARGET_IMAGE_URL;
+        
+        userImg.onload = function() { 
+            const faceData = sampleImage(userImg);
+            const textData = sampleText();
+            init(faceData, textData); 
+        };
+        
+        userImg.onerror = function() { document.getElementById('loading-info').innerText = "ERROR: Load Failed."; };
+        
     </script>
-
 
 </body>
 
