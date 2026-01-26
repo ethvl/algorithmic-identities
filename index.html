@@ -19,7 +19,8 @@
         /* Essential styling for the animation container */
         #animation-container {
             width: 100%;
-            height: 100vh; /* Fill the right panel */
+            height: 100vh;
+            /* Fill the right panel */
             position: relative;
             overflow: hidden;
             background-color: #ffffff;
@@ -38,11 +39,12 @@
             text-transform: uppercase;
             font-size: 12px;
         }
-        
+
         /* Ensure right panel doesn't scroll excessively */
         .right-panel.index-page {
             overflow: hidden;
-            padding: 0 !important; /* Remove padding to let canvas touch edges */
+            padding: 0 !important;
+            /* Remove padding to let canvas touch edges */
         }
     </style>
 </head>
@@ -73,7 +75,19 @@
                         <li><a href="week1.html"><strong>W1</strong> : Prologue</a></li>
                         <li><a href="week2.html"><strong>W2</strong> : Atelier Presentation</a></li>
                         <li><a href="week3.html"><strong>W3</strong> : Mindmap & E-1</a></li>
-                        </ul>
+                        <li><a href="week4.html"><strong>W4</strong> : RPO Plan & P-1</a></li>
+                        <li><a href="week5.html"><strong>W5</strong> : RPO Consult & RE-1</a></li>
+                        <li><a href="week6.html"><strong>W6</strong> : RPO Peer Reviews</a></li>
+                        <li><a href="week7.html"><strong>W7</strong> : Formative Assessment</a></li>
+                        <li><a href="week8.html"><strong>W8</strong> : E-2</a></li>
+                        <li><a href="week9.html"><strong>W9</strong> : ASM & AxiDraw</a></li>
+                        <li><a href="week10.html"><strong>W10</strong> : Task-Based Making</a></li>
+                        <li><a href="week11.html"><strong>W11</strong> : E-3 - 6</a></li>
+                        <li><a href="week12.html"><strong>W12</strong> : P-2</a></li>
+                        <li><a href="week13.html"><strong>W13</strong> : Cohort Presentation</a></li>
+                        <li><a href="week14.html"><strong>W14</strong> : P-3</a></li>
+                        <li><a href="week15.html"><strong>W15</strong> : E- 7 & P-4</a></li>
+                    </ul>
                 </div>
 
                 <div class="nav-group overview-group">
@@ -82,8 +96,22 @@
                         <span class="nav-toggle-symbol">+</span>
                     </button>
                     <ul class="overview-weeks">
-                         <li><a href="s2-week1.html"><strong>W1</strong> : Progress Review</a></li>
-                         </ul>
+                        <li><a href="s2-week1.html"><strong>W1</strong> : SEM-1 Review</a></li>
+                        <li><a href="s2-week2.html"><strong>W2</strong> : DISS Consult & P-5</a></li>
+                        <li><a href="s2-week3.html"><strong>W3</strong> : GDI Interview & P-6</a></li>
+                        <li><a href="week4.html"><strong>W4</strong> : </a></li>
+                        <li><a href="week5.html"><strong>W5</strong> : </a></li>
+                        <li><a href="week6.html"><strong>W6</strong> : </a></li>
+                        <li><a href="week7.html"><strong>W7</strong> : </a></li>
+                        <li><a href="week8.html"><strong>W8</strong> : </a></li>
+                        <li><a href="week9.html"><strong>W9</strong> : </a></li>
+                        <li><a href="week10.html"><strong>W10</strong> : </a></li>
+                        <li><a href="week11.html"><strong>W11</strong> : </a></li>
+                        <li><a href="week12.html"><strong>W12</strong> : </a></li>
+                        <li><a href="week13.html"><strong>W13</strong> : </a></li>
+                        <li><a href="week14.html"><strong>W14</strong> : </a></li>
+                        <li><a href="week15.html"><strong>W15</strong> : </a></li>
+                    </ul>
                 </div>
 
                 <div class="nav-group">
@@ -136,15 +164,23 @@
 
     <script>
         // --- CONFIGURATION ---
-        const MASONRY_GRID_SIZE = 45; 
-        const VOXEL_SIZE = 12;        
-        const VOXEL_GAP = 1;          
-        
-        // YOUR IMAGE URL
-        const TARGET_IMAGE_URL = 'assets/images/Kate Bush by Fresno.jpeg'; 
+        const MASONRY_GRID_SIZE = 45;
+        const VOXEL_SIZE = 12;
+        const VOXEL_GAP = 1;
+
+        // YOUR IMAGE
+        const TARGET_IMAGE_URL = 'assets/images/Kate Bush by Fresno.jpeg';
+
+        // DATA SOURCE: SIMULATED USER SUBMISSIONS
+        // These words will form the "Outline" of the identity
+        const SUBMITTED_WORDS = [
+            "IDENTITY", "DATA", "PROFILE", "SEARCH", "CLICK", "LIKE", "SHARE",
+            "VIEW", "LOG", "USER", "CACHE", "COOKIE", "ALGORITHM", "TRACE",
+            "SCAN", "UPLOAD", "DIGITAL", "SELF", "INPUT", "OUTPUT"
+        ];
 
         const IMAGE_URLS = [
-            'https://picsum.photos/id/106/200/200', 
+            'https://picsum.photos/id/106/200/200',
             'https://picsum.photos/id/700/200/200',
             'https://picsum.photos/id/189/200/200',
             'https://picsum.photos/id/348/200/200',
@@ -154,31 +190,72 @@
             'https://picsum.photos/id/487/200/200',
         ];
 
-        // --- 1. IMAGE SAMPLER ---
+        // --- HELPER: GENERATE TEXT TEXTURE ---
+        function createTextTexture(word) {
+            const cvs = document.createElement('canvas');
+            cvs.width = 128; cvs.height = 64; // Rectangular for words
+            const ctx = cvs.getContext('2d');
+
+            // Transparent BG
+            // Text Style
+            ctx.font = 'bold 35px Arial';
+            ctx.fillStyle = '#111'; // Dark Grey text
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // Add a "Tag" background for readability
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(10, 10, 108, 44);
+
+            ctx.fillStyle = '#000000';
+            ctx.fillText(word, 64, 32);
+
+            const tex = new THREE.CanvasTexture(cvs);
+            return tex;
+        }
+
+        // --- 1. IMAGE SAMPLER WITH EDGE DETECTION ---
         function sampleImage(imageObj) {
-            const w = 100; 
+            const w = 100;
             const aspect = imageObj.width / imageObj.height;
             const h = Math.floor(w / aspect);
             const canvas = document.createElement('canvas');
             canvas.width = w; canvas.height = h;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(imageObj, 0, 0, w, h);
-            const imgData = ctx.getImageData(0,0, w, h).data;
+            const imgData = ctx.getImageData(0, 0, w, h).data;
             const targets = [];
             const offX = -(w * (VOXEL_SIZE + VOXEL_GAP)) / 2;
             const offY = (h * (VOXEL_SIZE + VOXEL_GAP)) / 2;
 
-            for(let y=0; y<h; y++) {
-                for(let x=0; x<w; x++) {
-                    const i = (y*w + x) * 4;
-                    const brightness = (imgData[i] + imgData[i+1] + imgData[i+2]) / 3;
+            // Helper to get brightness of a pixel at x,y
+            function getB(x, y) {
+                if (x < 0 || x >= w || y < 0 || y >= h) return 0; // Out of bounds is dark
+                const idx = (y * w + x) * 4;
+                return (imgData[idx] + imgData[idx + 1] + imgData[idx + 2]) / 3;
+            }
 
-                    if (brightness > 50) { 
+            for (let y = 0; y < h; y++) {
+                for (let x = 0; x < w; x++) {
+                    const currentB = getB(x, y);
+
+                    if (currentB > 50) {
+                        // EDGE DETECTION LOGIC
+                        // Check neighbors (Up, Down, Left, Right). 
+                        // If any neighbor is dark (<50), this pixel is on the edge.
+                        let isEdge = false;
+                        if (getB(x + 1, y) < 50 || getB(x - 1, y) < 50 ||
+                            getB(x, y + 1) < 50 || getB(x, y - 1) < 50) {
+                            isEdge = true;
+                        }
+
+                        const i = (y * w + x) * 4;
                         targets.push({
                             x: offX + (x * (VOXEL_SIZE + VOXEL_GAP)),
                             y: offY - (y * (VOXEL_SIZE + VOXEL_GAP)),
-                            z: 0, 
-                            color: new THREE.Color(`rgb(${imgData[i]},${imgData[i+1]},${imgData[i+2]})`)
+                            z: 0,
+                            color: new THREE.Color(`rgb(${imgData[i]},${imgData[i + 1]},${imgData[i + 2]})`),
+                            isEdge: isEdge // Mark this target as an outline candidate
                         });
                     }
                 }
@@ -186,32 +263,26 @@
             return targets;
         }
 
-        // --- 2. TEXT SAMPLER ---
+        // --- 2. TEXT SAMPLER (Unchanged) ---
         function sampleText() {
-            const w = 250; 
-            const h = 100;
+            const w = 250; const h = 100;
             const canvas = document.createElement('canvas');
             canvas.width = w; canvas.height = h;
             const ctx = canvas.getContext('2d');
-            
-            ctx.fillStyle = 'black';
-            ctx.fillRect(0,0,w,h);
-            ctx.font = 'bold 24px Arial'; 
-            ctx.fillStyle = 'white'; 
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            
-            ctx.fillText("ALGORITHMIC", w/2, h/2 - 15);
-            ctx.fillText("IDENTITIES", w/2, h/2 + 15);
+            ctx.fillStyle = 'black'; ctx.fillRect(0, 0, w, h);
+            ctx.font = 'bold 24px Arial'; ctx.fillStyle = 'white';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText("ALGORITHMIC", w / 2, h / 2 - 15);
+            ctx.fillText("IDENTITIES", w / 2, h / 2 + 15);
 
-            const imgData = ctx.getImageData(0,0, w, h).data;
+            const imgData = ctx.getImageData(0, 0, w, h).data;
             const targets = [];
             const offX = -(w * (VOXEL_SIZE + VOXEL_GAP)) / 2;
             const offY = (h * (VOXEL_SIZE + VOXEL_GAP)) / 2;
 
-            for(let y=0; y<h; y++) {
-                for(let x=0; x<w; x++) {
-                    if (imgData[(y*w + x) * 4] > 128) { 
+            for (let y = 0; y < h; y++) {
+                for (let x = 0; x < w; x++) {
+                    if (imgData[(y * w + x) * 4] > 128) {
                         targets.push({
                             x: offX + (x * (VOXEL_SIZE + VOXEL_GAP)),
                             y: offY - (y * (VOXEL_SIZE + VOXEL_GAP)),
@@ -224,7 +295,6 @@
         }
 
         function init(faceTargets, textTargets) {
-            // TARGET THE CONTAINER, NOT THE WINDOW
             const container = document.getElementById('animation-container');
             const width = container.clientWidth;
             const height = container.clientHeight;
@@ -239,10 +309,8 @@
 
             const renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setSize(width, height);
-            renderer.shadowMap.enabled = true; 
+            renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-            
-            // Append canvas to our container
             container.appendChild(renderer.domElement);
 
             const lightKey = new THREE.DirectionalLight(0xffffff, 1.0);
@@ -251,29 +319,39 @@
             lightKey.shadow.mapSize.width = 2048;
             lightKey.shadow.mapSize.height = 2048;
             scene.add(lightKey);
-            
-            const lightFill = new THREE.DirectionalLight(0x4444ff, 0.3); 
+
+            const lightFill = new THREE.DirectionalLight(0x4444ff, 0.3);
             lightFill.position.set(-500, 100, 200);
             scene.add(lightFill);
-            scene.add(new THREE.AmbientLight(0x606060)); 
+            scene.add(new THREE.AmbientLight(0x606060));
 
+            // -- LOAD ASSETS --
             const textureLoader = new THREE.TextureLoader();
             const loadedTextures = IMAGE_URLS.map(url => {
-                textureLoader.setCrossOrigin('anonymous'); 
+                textureLoader.setCrossOrigin('anonymous');
                 return textureLoader.load(url);
             });
 
-            const geometry = new THREE.BoxGeometry(1, 1, 1); 
-            const materialCache = loadedTextures.map(tex => new THREE.MeshStandardMaterial({
+            // Generate Text Textures for the Words
+            const wordMaterials = SUBMITTED_WORDS.map(word => {
+                return new THREE.MeshBasicMaterial({
+                    map: createTextTexture(word),
+                    transparent: true,
+                    color: 0xffffff
+                });
+            });
+
+            const boxGeo = new THREE.BoxGeometry(1, 1, 1);
+            const imageMaterialCache = loadedTextures.map(tex => new THREE.MeshStandardMaterial({
                 map: tex, roughness: 0.5, metalness: 0.0, color: 0xffffff
             }));
 
-            // Use container dimensions for grid calculation
+            // -- GRID CALC --
             const cols = Math.ceil(width / MASONRY_GRID_SIZE) + 2;
             const rows = Math.ceil(height / MASONRY_GRID_SIZE) + 2;
-            const totalScreenSlots = cols * rows; 
+            const totalScreenSlots = cols * rows;
             const TOTAL_PARTICLES = Math.max(faceTargets.length, totalScreenSlots, textTargets.length);
-            
+
             const gridMap = new Array(cols * rows).fill(false);
             function checkAndOccupy(c, r, w, h) {
                 if (c + w > cols || r + h > rows) return false;
@@ -286,45 +364,64 @@
             const group = new THREE.Group();
             scene.add(group);
 
-            const shuffledFaceIndices = Array.from({length: faceTargets.length}, (_, i) => i).sort(() => Math.random() - 0.5);
-            const shuffledTextIndices = Array.from({length: textTargets.length}, (_, i) => i).sort(() => Math.random() - 0.5);
+            const shuffledFaceIndices = Array.from({ length: faceTargets.length }, (_, i) => i).sort(() => Math.random() - 0.5);
+            const shuffledTextIndices = Array.from({ length: textTargets.length }, (_, i) => i).sort(() => Math.random() - 0.5);
 
-            for(let i=0; i<TOTAL_PARTICLES; i++) {
-                const w = Math.random() > 0.85 ? 2 : 1;
-                const h = Math.random() > 0.85 ? 2 : 1;
-                let c = Math.floor(Math.random() * cols);
-                let r = Math.floor(Math.random() * rows);
-                
-                if (!checkAndOccupy(c, r, w, h)) {
-                    let found = false;
-                    for(let rr=0; rr<rows && !found; rr++) {
-                        for(let cc=0; cc<cols && !found; cc++) {
-                            if(checkAndOccupy(cc, rr, w, h)) { c=cc; r=rr; found=true; }
-                        }
-                    }
-                }
+            for (let i = 0; i < TOTAL_PARTICLES; i++) {
 
-                // Adjust positioning to center based on container size
-                const startX = (c * MASONRY_GRID_SIZE) + (w * MASONRY_GRID_SIZE)/2 - (cols * MASONRY_GRID_SIZE)/2;
-                const startY = -((r * MASONRY_GRID_SIZE) + (h * MASONRY_GRID_SIZE)/2) + (rows * MASONRY_GRID_SIZE)/2;
-                
-                const mat = materialCache[Math.floor(Math.random() * materialCache.length)].clone(); 
-                const mesh = new THREE.Mesh(geometry, mat);
-                
-                mesh.position.set(startX, startY, 0);
-                mesh.scale.set(w * MASONRY_GRID_SIZE - 2, h * MASONRY_GRID_SIZE - 2, 5);
-                mesh.castShadow = true;
-                mesh.receiveShadow = true;
-
+                // --- DETERMINE ROLE ---
                 const isFace = i < faceTargets.length;
                 const faceIndex = isFace ? shuffledFaceIndices[i] : -1;
                 const isText = isFace && (i < textTargets.length);
                 const textIndex = isText ? shuffledTextIndices[i] : -1;
 
+                const faceTargetData = isFace ? faceTargets[faceIndex] : null;
+
+                // --- MATERIAL SELECTION ---
+                // If this particle targets a FACE EDGE, make it a WORD.
+                // Otherwise, make it an IMAGE.
+                let mat, geometry;
+                let isWordParticle = false;
+
+                if (isFace && faceTargetData.isEdge) {
+                    // Assign a random word from our submitted list
+                    mat = wordMaterials[Math.floor(Math.random() * wordMaterials.length)].clone();
+                    geometry = boxGeo; // We use box so it has depth
+                    isWordParticle = true;
+                } else {
+                    // Standard Image Block
+                    mat = imageMaterialCache[Math.floor(Math.random() * imageMaterialCache.length)].clone();
+                    geometry = boxGeo;
+                }
+
+                // --- MASONRY START POS ---
+                const w = Math.random() > 0.85 ? 2 : 1;
+                const h = Math.random() > 0.85 ? 2 : 1;
+                let c = Math.floor(Math.random() * cols);
+                let r = Math.floor(Math.random() * rows);
+
+                if (!checkAndOccupy(c, r, w, h)) {
+                    let found = false;
+                    for (let rr = 0; rr < rows && !found; rr++) {
+                        for (let cc = 0; cc < cols && !found; cc++) {
+                            if (checkAndOccupy(cc, rr, w, h)) { c = cc; r = rr; found = true; }
+                        }
+                    }
+                }
+                const startX = (c * MASONRY_GRID_SIZE) + (w * MASONRY_GRID_SIZE) / 2 - (cols * MASONRY_GRID_SIZE) / 2;
+                const startY = -((r * MASONRY_GRID_SIZE) + (h * MASONRY_GRID_SIZE) / 2) + (rows * MASONRY_GRID_SIZE) / 2;
+
+                const mesh = new THREE.Mesh(geometry, mat);
+                mesh.position.set(startX, startY, 0);
+                mesh.scale.set(w * MASONRY_GRID_SIZE - 2, h * MASONRY_GRID_SIZE - 2, 5);
+                mesh.castShadow = true;
+                mesh.receiveShadow = true;
+
                 mesh.userData = {
                     isFace: isFace,
                     isText: isText,
-                    faceTarget: isFace ? faceTargets[faceIndex] : null,
+                    isWordParticle: isWordParticle,
+                    faceTarget: faceTargetData,
                     textTarget: isText ? textTargets[textIndex] : null,
                 };
                 group.add(mesh);
@@ -336,19 +433,28 @@
             // WAIT
             tl.to({}, { duration: 1.5 });
 
-            // PHASE 1: GRID -> FACE
+            // --- PHASE 1: GRID -> FACE ---
             const faceParticles = particles.filter(p => p.userData.isFace);
             const noiseParticles = particles.filter(p => !p.userData.isFace);
 
+            // 1. Transform Scale
+            // Words stay slightly larger to be readable
             tl.to(faceParticles.map(p => p.scale), {
-                duration: 1.5, x: VOXEL_SIZE, y: VOXEL_SIZE, z: 5, ease: "power2.inOut"
+                duration: 1.5,
+                x: i => faceParticles[i].userData.isWordParticle ? VOXEL_SIZE * 2.5 : VOXEL_SIZE, // Words are wider
+                y: VOXEL_SIZE,
+                z: 5,
+                ease: "power2.inOut"
             }, "toFace");
-            
+
+            // 2. Colorize
+            // For Image particles: Tint to Face Color.
+            // For Word particles: Keep them White/Black (Readable) or Tint slightly.
             tl.to(faceParticles.map(p => p.material.color), {
                 duration: 1.5,
-                r: i => faceParticles[i].userData.faceTarget.color.r,
-                g: i => faceParticles[i].userData.faceTarget.color.g,
-                b: i => faceParticles[i].userData.faceTarget.color.b,
+                r: i => faceParticles[i].userData.isWordParticle ? 1 : faceParticles[i].userData.faceTarget.color.r,
+                g: i => faceParticles[i].userData.isWordParticle ? 1 : faceParticles[i].userData.faceTarget.color.g,
+                b: i => faceParticles[i].userData.isWordParticle ? 1 : faceParticles[i].userData.faceTarget.color.b,
                 ease: "power2.inOut"
             }, "toFace");
 
@@ -367,7 +473,7 @@
                 ease: "power3.inOut",
                 stagger: { amount: 0.5, from: "random" }
             }, "formFace");
-            
+
             tl.to(faceParticles.map(p => p.rotation), {
                 duration: 2.0, x: 0, y: 0, z: 0, ease: "power2.out"
             }, "formFace");
@@ -375,7 +481,7 @@
             // WAIT
             tl.to({}, { duration: 3.0 });
 
-            // PHASE 2: FACE -> TEXT
+            // --- PHASE 2: FACE -> TEXT ---
             const textParticles = particles.filter(p => p.userData.isText);
             const leftoverFaceParticles = particles.filter(p => p.userData.isFace && !p.userData.isText);
 
@@ -384,14 +490,23 @@
                 x: i => textParticles[i].userData.textTarget.x,
                 y: i => textParticles[i].userData.textTarget.y,
                 z: 0,
-                ease: "power4.inOut", 
+                ease: "power4.inOut",
                 stagger: { amount: 0.5, from: "center" }
             }, "toText");
 
-            // REVEAL IMAGES ON TEXT
+            // REVEAL CONTENT ON TEXT
+            // Set everything to White so textures show clearly
             tl.to(textParticles.map(p => p.material.color), {
                 duration: 2.0,
-                r: 1, g: 1, b: 1, 
+                r: 1, g: 1, b: 1,
+                ease: "power2.inOut"
+            }, "toText");
+
+            // Scale Words down slightly if they end up in the text
+            tl.to(textParticles.map(p => p.scale), {
+                duration: 2.0,
+                x: VOXEL_SIZE, // Reset to square
+                y: VOXEL_SIZE,
                 ease: "power2.inOut"
             }, "toText");
 
@@ -405,7 +520,6 @@
             // WAIT
             tl.to({}, { duration: 3.0 });
 
-
             function animate() {
                 requestAnimationFrame(animate);
                 renderer.render(scene, camera);
@@ -413,30 +527,27 @@
             animate();
             document.getElementById('loading-info').style.display = 'none';
 
-            // HANDLE RESIZE (Targeting Container)
             window.addEventListener('resize', () => {
                 const newWidth = container.clientWidth;
                 const newHeight = container.clientHeight;
                 camera.aspect = newWidth / newHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(newWidth, newHeight);
-                // Note: Full reload is usually cleaner for masonry recalculation
-                // location.reload(); 
             });
         }
 
         const userImg = new Image();
-        userImg.crossOrigin = "Anonymous"; 
+        userImg.crossOrigin = "Anonymous";
         userImg.src = TARGET_IMAGE_URL;
-        
-        userImg.onload = function() { 
+
+        userImg.onload = function () {
             const faceData = sampleImage(userImg);
             const textData = sampleText();
-            init(faceData, textData); 
+            init(faceData, textData);
         };
-        
-        userImg.onerror = function() { document.getElementById('loading-info').innerText = "ERROR: Load Failed."; };
-        
+
+        userImg.onerror = function () { document.getElementById('loading-info').innerText = "ERROR: Load Failed."; };
+
     </script>
 
 </body>
