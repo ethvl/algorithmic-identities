@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>A-I: S1-W3</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>A-I: S1-W3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <base href="/algorithmic-identities/">
+    <base href="/algorithmic-identities/">
 
-  <link rel="icon" href="favicon.png" />
-  <link rel="stylesheet" href="/algorithmic-identities/assets/styles.css">
+    <link rel="icon" href="favicon.png" />
+    <link rel="stylesheet" href="/algorithmic-identities/assets/styles.css">
 </head>
 
 <body>
@@ -538,15 +538,20 @@
 
 
     <!-- ACCORDION SCRIPT -->
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+
+            /* -----------------------------
+               1) LEFT NAV ACCORDION TOGGLES
+            ------------------------------ */
             document.querySelectorAll(".overview-group").forEach(group => {
                 const toggleBtn = group.querySelector(".nav-toggle");
                 const symbol = group.querySelector(".nav-toggle-symbol");
 
                 if (!toggleBtn || !symbol) return;
 
-                // init closed
+                // default closed
                 group.classList.remove("is-open");
                 toggleBtn.setAttribute("aria-expanded", "false");
                 symbol.textContent = "+";
@@ -557,58 +562,63 @@
                     symbol.textContent = isOpen ? "−" : "+";
                 });
             });
-        });
-    </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
 
-            // Match /semester-1/week-1.html, /semester-1/week-2.html, etc.
-            const m = window.location.pathname.match(/week-(\d+)\.html$/);
-            const current = m ? parseInt(m[1], 10) : 1;
-
+            /* -----------------------------
+               2) BOTTOM-RIGHT WEEK NAV
+            ------------------------------ */
             const prev = document.getElementById("prevWeek");
             const next = document.getElementById("nextWeek");
             const topBtn = document.getElementById("topBtn");
 
-            if (prev) {
-                prev.addEventListener("click", () => {
-                    if (current > 1) {
-                        window.location.href = `week-${current - 1}.html`; // stays in semester-1 folder
-                    }
-                });
-            }
-
-            if (next) {
-                next.addEventListener("click", () => {
-                    window.location.href = `week-${current + 1}.html`;
-                });
-            }
-
+            // Scroll to top
             if (topBtn) {
                 topBtn.addEventListener("click", () => {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                 });
             }
 
-        });
+            // Detect semester + week from URL
+            // Works with GitHub Pages paths like:
+            // /algorithmic-identities/semester-1/week-15.html
+            const path = window.location.pathname;
+            const match = path.match(/semester-(\d+)\/week-(\d+)\.html$/);
 
-        /* Scroll to top */
-        document.getElementById("topBtn").addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
+            // If this page is NOT a week page, just stop here.
+            if (!match) return;
 
-        const group = document.querySelector(".overview-group");
-        const btn = document.getElementById("overviewToggle");
-        const symbol = document.getElementById("overviewSymbol");
+            const semester = parseInt(match[1], 10);
+            const currentWeek = parseInt(match[2], 10);
 
-        btn.setAttribute("aria-expanded", "false");
-        symbol.textContent = "+";
+            // Set last week per semester (edit SEM 2 when ready)
+            const LAST_WEEK_BY_SEMESTER = {
+                1: 15,
+                2: 15
+            };
+            const lastWeek = LAST_WEEK_BY_SEMESTER[semester] ?? 15;
 
-        btn.addEventListener("click", () => {
-            const isOpen = group.classList.toggle("is-open");
-            btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-            symbol.textContent = isOpen ? "−" : "+";
+            // Prev button
+            if (prev) {
+                if (currentWeek <= 1) {
+                    prev.style.display = "none";
+                } else {
+                    prev.addEventListener("click", () => {
+                        window.location.href = `semester-${semester}/week-${currentWeek - 1}.html`;
+                    });
+                }
+            }
+
+            // Next button
+            if (next) {
+                if (currentWeek >= lastWeek) {
+                    next.style.display = "none";
+                } else {
+                    next.addEventListener("click", () => {
+                        window.location.href = `semester-${semester}/week-${currentWeek + 1}.html`;
+                    });
+                }
+            }
+
         });
     </script>
 
