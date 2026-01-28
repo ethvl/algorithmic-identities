@@ -1544,6 +1544,55 @@ figure.exp-block figcaption {
     font-family: "Just Me Again Down Here", cursive;
 }
 
+/* dean hover img */
+.text-hover-image {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Full-screen overlay image */
+.text-hover-image img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.98);
+    width: 500px !important;
+    height: 500px !important;
+    max-width: none !important;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    background: #f0f0f0;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+    z-index: 9999;
+}
+
+/* Optional dimmed background */
+.text-hover-image::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 9998;
+}
+
+/* Reveal on hover */
+.text-hover-image:hover img {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.text-hover-image:hover::after {
+    opacity: 1;
+}
+
+
+
 
 /* -----------------------------------------
    RESPONSIVE (unchanged)
