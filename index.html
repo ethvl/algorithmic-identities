@@ -5,16 +5,27 @@
     <meta charset="UTF-8">
     <title>A-I: Algorithmic Identities</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/algorithmic-identities/favicon.png" />
+    <link rel="icon" href="favicon.png" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Chakra Petch', sans-serif;
+        }
+    </style>
 
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="/algorithmic-identities/assets/styles.css">
     <base href="/algorithmic-identities/">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
 
     <style>
         /* Essential styling for the animation container */
@@ -25,20 +36,6 @@
             position: relative;
             overflow: hidden;
             background-color: #ffffff;
-        }
-
-        #loading-info {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #888;
-            font-family: monospace;
-            pointer-events: none;
-            z-index: 10;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: 12px;
         }
 
         /* Ensure right panel doesn't scroll excessively */
@@ -57,9 +54,7 @@
         <aside class="left-rail">
 
             <div class="site-title-block">
-                <div class="site-kicker">
-                    <a href="index.html">A-I: Algorithmic Identities</a>
-                </div>
+                <div class="site-kicker"><a href="index.html">A-I: Algorithmic Identities</a></div>
                 <p class="site-description">
                     A design-research project exploring how our digital identities are co-constructed by algorithms,
                     shaping who we become online.
@@ -117,7 +112,6 @@
 
         <main class="right-panel index-page">
             <div id="animation-container">
-                <div id="loading-info">INITIALIZING SYSTEM...</div>
             </div>
         </main>
 
@@ -146,392 +140,249 @@
     </script>
 
     <script>
-        // --- CONFIGURATION ---
-        const MASONRY_GRID_SIZE = 45;
-        const VOXEL_SIZE = 12;
-        const VOXEL_GAP = 1;
+        let input;
+        let pg;
+        let points = [];
+        const res = 16;
+        const density = "Ñ@#W$9876543210?!abc;:+=-,._ ";
 
-        // YOUR IMAGE
-        const TARGET_IMAGE_URL = 'assets/images/Kate Bush by Fresno.jpeg';
-
-        // DATA SOURCE: SIMULATED USER SUBMISSIONS
-        // These words will form the "Outline" of the identity
-        const SUBMITTED_WORDS = [
-            "IDENTITY", "DATA", "PROFILE", "SEARCH", "CLICK", "LIKE", "SHARE",
-            "VIEW", "LOG", "USER", "CACHE", "COOKIE", "ALGORITHM", "TRACE",
-            "SCAN", "UPLOAD", "DIGITAL", "SELF", "INPUT", "OUTPUT"
+        let thumbnails = [];
+        let imgPaths = [
+            'https://picsum.photos/50/50?random=1',
+            'https://picsum.photos/50/50?random=2',
+            'https://picsum.photos/50/50?random=3'
         ];
 
-        const IMAGE_URLS = [
-            'https://picsum.photos/id/106/200/200',
-            'https://picsum.photos/id/700/200/200',
-            'https://picsum.photos/id/189/200/200',
-            'https://picsum.photos/id/348/200/200',
-            'https://picsum.photos/id/453/200/200',
-            'https://picsum.photos/id/542/200/200',
-            'https://picsum.photos/id/564/200/200',
-            'https://picsum.photos/id/487/200/200',
-        ];
+        let progress = 0;
+        let faceProgress = 0;
+        const speed = 0.007;
+        const morphSpeed = 0.005;
+        let isMorphing = false;
 
-        // --- HELPER: GENERATE TEXT TEXTURE ---
-        function createTextTexture(word) {
-            const cvs = document.createElement('canvas');
-            cvs.width = 128; cvs.height = 64; // Rectangular for words
-            const ctx = cvs.getContext('2d');
+        let containerEl;
 
-            // Transparent BG
-            // Text Style
-            ctx.font = 'bold 35px Arial';
-            ctx.fillStyle = '#111'; // Dark Grey text
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-
-            // Add a "Tag" background for readability
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(10, 10, 108, 44);
-
-            ctx.fillStyle = '#000000';
-            ctx.fillText(word, 64, 32);
-
-            const tex = new THREE.CanvasTexture(cvs);
-            return tex;
+        function preload() {
+            for (let path of imgPaths) thumbnails.push(loadImage(path));
         }
 
-        // --- 1. IMAGE SAMPLER WITH EDGE DETECTION ---
-        function sampleImage(imageObj) {
-            const w = 100;
-            const aspect = imageObj.width / imageObj.height;
-            const h = Math.floor(w / aspect);
-            const canvas = document.createElement('canvas');
-            canvas.width = w; canvas.height = h;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(imageObj, 0, 0, w, h);
-            const imgData = ctx.getImageData(0, 0, w, h).data;
-            const targets = [];
-            const offX = -(w * (VOXEL_SIZE + VOXEL_GAP)) / 2;
-            const offY = (h * (VOXEL_SIZE + VOXEL_GAP)) / 2;
+        function setup() {
+            containerEl = document.getElementById("animation-container");
 
-            // Helper to get brightness of a pixel at x,y
-            function getB(x, y) {
-                if (x < 0 || x >= w || y < 0 || y >= h) return 0; // Out of bounds is dark
-                const idx = (y * w + x) * 4;
-                return (imgData[idx] + imgData[idx + 1] + imgData[idx + 2]) / 3;
-            }
+            // Match canvas to the container (right panel)
+            const w = containerEl.clientWidth;
+            const h = containerEl.clientHeight;
 
-            for (let y = 0; y < h; y++) {
-                for (let x = 0; x < w; x++) {
-                    const currentB = getB(x, y);
+            const cnv = createCanvas(w, h);
+            cnv.parent("animation-container");
 
-                    if (currentB > 50) {
-                        // EDGE DETECTION LOGIC
-                        // Check neighbors (Up, Down, Left, Right). 
-                        // If any neighbor is dark (<50), this pixel is on the edge.
-                        let isEdge = false;
-                        if (getB(x + 1, y) < 50 || getB(x - 1, y) < 50 ||
-                            getB(x, y + 1) < 50 || getB(x, y - 1) < 50) {
-                            isEdge = true;
-                        }
+            pg = createGraphics(w, h);
+            pg.pixelDensity(1);
 
-                        const i = (y * w + x) * 4;
-                        targets.push({
-                            x: offX + (x * (VOXEL_SIZE + VOXEL_GAP)),
-                            y: offY - (y * (VOXEL_SIZE + VOXEL_GAP)),
-                            z: 0,
-                            color: new THREE.Color(`rgb(${imgData[i]},${imgData[i + 1]},${imgData[i + 2]})`),
-                            isEdge: isEdge // Mark this target as an outline candidate
-                        });
-                    }
-                }
-            }
-            return targets;
-        }
+            // Input field
+            input = createInput('[A-I]');
+            input.parent("animation-container");
+            input.style('position', 'absolute');
+            input.style('left', '20px');
+            input.style('bottom', '20px');
+            input.style('font-family', "'Chakra Petch', sans-serif");
+            input.style('font-weight', '700');
+            input.style('font-size', '14px');
+            input.style('border', '1px solid rgba(0,0,0,0.15)');
+            input.style('background', 'rgba(255,255,255,0.85)');
+            input.style('padding', '8px 10px');
+            input.style('outline', 'none');
 
-        // --- 2. TEXT SAMPLER (Unchanged) ---
-        function sampleText() {
-            const w = 250; const h = 100;
-            const canvas = document.createElement('canvas');
-            canvas.width = w; canvas.height = h;
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'black'; ctx.fillRect(0, 0, w, h);
-            ctx.font = 'bold 24px Arial'; ctx.fillStyle = 'white';
-            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-            ctx.fillText("ALGORITHMIC", w / 2, h / 2 - 15);
-            ctx.fillText("IDENTITIES", w / 2, h / 2 + 15);
-
-            const imgData = ctx.getImageData(0, 0, w, h).data;
-            const targets = [];
-            const offX = -(w * (VOXEL_SIZE + VOXEL_GAP)) / 2;
-            const offY = (h * (VOXEL_SIZE + VOXEL_GAP)) / 2;
-
-            for (let y = 0; y < h; y++) {
-                for (let x = 0; x < w; x++) {
-                    if (imgData[(y * w + x) * 4] > 128) {
-                        targets.push({
-                            x: offX + (x * (VOXEL_SIZE + VOXEL_GAP)),
-                            y: offY - (y * (VOXEL_SIZE + VOXEL_GAP)),
-                            z: 0
-                        });
-                    }
-                }
-            }
-            return targets;
-        }
-
-        function init(faceTargets, textTargets) {
-            const container = document.getElementById('animation-container');
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-
-            const scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xffffff);
-            scene.fog = new THREE.Fog(0xffffff, 800, 3000);
-
-            const camera = new THREE.PerspectiveCamera(50, width / height, 1, 5000);
-            camera.position.set(0, 0, 1600);
-            camera.lookAt(0, 0, 0);
-
-            const renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(width, height);
-            renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-            container.appendChild(renderer.domElement);
-
-            const lightKey = new THREE.DirectionalLight(0xffffff, 1.0);
-            lightKey.position.set(200, 500, 600);
-            lightKey.castShadow = true;
-            lightKey.shadow.mapSize.width = 2048;
-            lightKey.shadow.mapSize.height = 2048;
-            scene.add(lightKey);
-
-            const lightFill = new THREE.DirectionalLight(0x4444ff, 0.3);
-            lightFill.position.set(-500, 100, 200);
-            scene.add(lightFill);
-            scene.add(new THREE.AmbientLight(0x606060));
-
-            // -- LOAD ASSETS --
-            const textureLoader = new THREE.TextureLoader();
-            const loadedTextures = IMAGE_URLS.map(url => {
-                textureLoader.setCrossOrigin('anonymous');
-                return textureLoader.load(url);
+            input.input(() => {
+                updateWordPoints();
+                progress = 0;
+                faceProgress = 0;
+                isMorphing = false;
             });
 
-            // Generate Text Textures for the Words
-            const wordMaterials = SUBMITTED_WORDS.map(word => {
-                return new THREE.MeshBasicMaterial({
-                    map: createTextTexture(word),
-                    transparent: true,
-                    color: 0xffffff
+            updateWordPoints();
+
+            // Hide loading text once p5 is ready
+            const loading = document.getElementById('loading-info');
+            if (loading) loading.style.display = 'none';
+        }
+
+        function updateWordPoints() {
+            points = [];
+            pg.clear();
+            pg.background(255);
+            pg.fill(0);
+
+            pg.textFont('Chakra Petch');
+            pg.textStyle(BOLD);
+
+            let txt = input.value().toUpperCase();
+            let dynamicSize = width / (txt.length * 0.75);
+            pg.textSize(min(dynamicSize, width / 4));
+            pg.textAlign(CENTER, CENTER);
+            pg.text(txt, pg.width / 2, pg.height / 2);
+            pg.loadPixels();
+
+            let tempPoints = [];
+            for (let y = 0; y < pg.height; y += res) {
+                for (let x = 0; x < pg.width; x += res) {
+                    const index = (x + y * pg.width) * 4;
+                    if (pg.pixels[index] < 128) tempPoints.push({ x, y });
+                }
+            }
+
+            if (tempPoints.length === 0) return;
+
+            let cols = floor(width / res);
+            let rows = floor(height / res);
+
+            for (let i = 0; i < cols * rows; i++) {
+                let sourceP = tempPoints[i % tempPoints.length];
+                let gx = (i % cols) * res + res / 2;
+                let gy = floor(i / cols) * res + res / 2;
+
+                points.push({
+                    x: sourceP.x,
+                    y: sourceP.y,
+                    fx: gx,
+                    fy: gy,
+                    type: floor(random(4)),
+                    imgIdx: floor(random(thumbnails.length)),
+                    seed: random(1000)
                 });
-            });
-
-            const boxGeo = new THREE.BoxGeometry(1, 1, 1);
-            const imageMaterialCache = loadedTextures.map(tex => new THREE.MeshStandardMaterial({
-                map: tex, roughness: 0.5, metalness: 0.0, color: 0xffffff
-            }));
-
-            // -- GRID CALC --
-            const cols = Math.ceil(width / MASONRY_GRID_SIZE) + 2;
-            const rows = Math.ceil(height / MASONRY_GRID_SIZE) + 2;
-            const totalScreenSlots = cols * rows;
-            const TOTAL_PARTICLES = Math.max(faceTargets.length, totalScreenSlots, textTargets.length);
-
-            const gridMap = new Array(cols * rows).fill(false);
-            function checkAndOccupy(c, r, w, h) {
-                if (c + w > cols || r + h > rows) return false;
-                for (let i = 0; i < w; i++) for (let j = 0; j < h; j++) if (gridMap[(r + j) * cols + (c + i)]) return false;
-                for (let i = 0; i < w; i++) for (let j = 0; j < h; j++) gridMap[(r + j) * cols + (c + i)] = true;
-                return true;
             }
-
-            const particles = [];
-            const group = new THREE.Group();
-            scene.add(group);
-
-            const shuffledFaceIndices = Array.from({ length: faceTargets.length }, (_, i) => i).sort(() => Math.random() - 0.5);
-            const shuffledTextIndices = Array.from({ length: textTargets.length }, (_, i) => i).sort(() => Math.random() - 0.5);
-
-            for (let i = 0; i < TOTAL_PARTICLES; i++) {
-
-                // --- DETERMINE ROLE ---
-                const isFace = i < faceTargets.length;
-                const faceIndex = isFace ? shuffledFaceIndices[i] : -1;
-                const isText = isFace && (i < textTargets.length);
-                const textIndex = isText ? shuffledTextIndices[i] : -1;
-
-                const faceTargetData = isFace ? faceTargets[faceIndex] : null;
-
-                // --- MATERIAL SELECTION ---
-                // If this particle targets a FACE EDGE, make it a WORD.
-                // Otherwise, make it an IMAGE.
-                let mat, geometry;
-                let isWordParticle = false;
-
-                if (isFace && faceTargetData.isEdge) {
-                    // Assign a random word from our submitted list
-                    mat = wordMaterials[Math.floor(Math.random() * wordMaterials.length)].clone();
-                    geometry = boxGeo; // We use box so it has depth
-                    isWordParticle = true;
-                } else {
-                    // Standard Image Block
-                    mat = imageMaterialCache[Math.floor(Math.random() * imageMaterialCache.length)].clone();
-                    geometry = boxGeo;
-                }
-
-                // --- MASONRY START POS ---
-                const w = Math.random() > 0.85 ? 2 : 1;
-                const h = Math.random() > 0.85 ? 2 : 1;
-                let c = Math.floor(Math.random() * cols);
-                let r = Math.floor(Math.random() * rows);
-
-                if (!checkAndOccupy(c, r, w, h)) {
-                    let found = false;
-                    for (let rr = 0; rr < rows && !found; rr++) {
-                        for (let cc = 0; cc < cols && !found; cc++) {
-                            if (checkAndOccupy(cc, rr, w, h)) { c = cc; r = rr; found = true; }
-                        }
-                    }
-                }
-                const startX = (c * MASONRY_GRID_SIZE) + (w * MASONRY_GRID_SIZE) / 2 - (cols * MASONRY_GRID_SIZE) / 2;
-                const startY = -((r * MASONRY_GRID_SIZE) + (h * MASONRY_GRID_SIZE) / 2) + (rows * MASONRY_GRID_SIZE) / 2;
-
-                const mesh = new THREE.Mesh(geometry, mat);
-                mesh.position.set(startX, startY, 0);
-                mesh.scale.set(w * MASONRY_GRID_SIZE - 2, h * MASONRY_GRID_SIZE - 2, 5);
-                mesh.castShadow = true;
-                mesh.receiveShadow = true;
-
-                mesh.userData = {
-                    isFace: isFace,
-                    isText: isText,
-                    isWordParticle: isWordParticle,
-                    faceTarget: faceTargetData,
-                    textTarget: isText ? textTargets[textIndex] : null,
-                };
-                group.add(mesh);
-                particles.push(mesh);
-            }
-
-            const tl = gsap.timeline({ repeat: -1, repeatDelay: 2, yoyo: true });
-
-            // WAIT
-            tl.to({}, { duration: 1.5 });
-
-            // --- PHASE 1: GRID -> FACE ---
-            const faceParticles = particles.filter(p => p.userData.isFace);
-            const noiseParticles = particles.filter(p => !p.userData.isFace);
-
-            // 1. Transform Scale
-            // Words stay slightly larger to be readable
-            tl.to(faceParticles.map(p => p.scale), {
-                duration: 1.5,
-                x: i => faceParticles[i].userData.isWordParticle ? VOXEL_SIZE * 2.5 : VOXEL_SIZE, // Words are wider
-                y: VOXEL_SIZE,
-                z: 5,
-                ease: "power2.inOut"
-            }, "toFace");
-
-            // 2. Colorize
-            // For Image particles: Tint to Face Color.
-            // For Word particles: Keep them White/Black (Readable) or Tint slightly.
-            tl.to(faceParticles.map(p => p.material.color), {
-                duration: 1.5,
-                r: i => faceParticles[i].userData.isWordParticle ? 1 : faceParticles[i].userData.faceTarget.color.r,
-                g: i => faceParticles[i].userData.isWordParticle ? 1 : faceParticles[i].userData.faceTarget.color.g,
-                b: i => faceParticles[i].userData.isWordParticle ? 1 : faceParticles[i].userData.faceTarget.color.b,
-                ease: "power2.inOut"
-            }, "toFace");
-
-            tl.to(noiseParticles.map(p => p.position), {
-                duration: 1.5, y: "-=1000", z: "-=500", ease: "power2.in"
-            }, "toFace");
-            tl.to(noiseParticles.map(p => p.material), {
-                duration: 1.0, opacity: 0, ease: "power2.in"
-            }, "toFace");
-
-            tl.to(faceParticles.map(p => p.position), {
-                duration: 1.8,
-                x: i => faceParticles[i].userData.faceTarget.x,
-                y: i => faceParticles[i].userData.faceTarget.y,
-                z: i => faceParticles[i].userData.faceTarget.z,
-                ease: "power3.inOut",
-                stagger: { amount: 0.5, from: "random" }
-            }, "formFace");
-
-            tl.to(faceParticles.map(p => p.rotation), {
-                duration: 2.0, x: 0, y: 0, z: 0, ease: "power2.out"
-            }, "formFace");
-
-            // WAIT
-            tl.to({}, { duration: 3.0 });
-
-            // --- PHASE 2: FACE -> TEXT ---
-            const textParticles = particles.filter(p => p.userData.isText);
-            const leftoverFaceParticles = particles.filter(p => p.userData.isFace && !p.userData.isText);
-
-            tl.to(textParticles.map(p => p.position), {
-                duration: 2.0,
-                x: i => textParticles[i].userData.textTarget.x,
-                y: i => textParticles[i].userData.textTarget.y,
-                z: 0,
-                ease: "power4.inOut",
-                stagger: { amount: 0.5, from: "center" }
-            }, "toText");
-
-            // REVEAL CONTENT ON TEXT
-            // Set everything to White so textures show clearly
-            tl.to(textParticles.map(p => p.material.color), {
-                duration: 2.0,
-                r: 1, g: 1, b: 1,
-                ease: "power2.inOut"
-            }, "toText");
-
-            // Scale Words down slightly if they end up in the text
-            tl.to(textParticles.map(p => p.scale), {
-                duration: 2.0,
-                x: VOXEL_SIZE, // Reset to square
-                y: VOXEL_SIZE,
-                ease: "power2.inOut"
-            }, "toText");
-
-            tl.to(leftoverFaceParticles.map(p => p.material), {
-                duration: 1.0, opacity: 0, ease: "power2.out"
-            }, "toText");
-            tl.to(leftoverFaceParticles.map(p => p.scale), {
-                duration: 1.0, x: 0, y: 0, ease: "power2.out"
-            }, "toText");
-
-            // WAIT
-            tl.to({}, { duration: 3.0 });
-
-            function animate() {
-                requestAnimationFrame(animate);
-                renderer.render(scene, camera);
-            }
-            animate();
-            document.getElementById('loading-info').style.display = 'none';
-
-            window.addEventListener('resize', () => {
-                const newWidth = container.clientWidth;
-                const newHeight = container.clientHeight;
-                camera.aspect = newWidth / newHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(newWidth, newHeight);
-            });
         }
 
-        const userImg = new Image();
-        userImg.crossOrigin = "Anonymous";
-        userImg.src = TARGET_IMAGE_URL;
+        function draw() {
+            background(255);
 
-        userImg.onload = function () {
-            const faceData = sampleImage(userImg);
-            const textData = sampleText();
-            init(faceData, textData);
-        };
+            if (points.length === 0) return;
 
-        userImg.onerror = function () { document.getElementById('loading-info').innerText = "ERROR: Load Failed."; };
+            if (progress < 1) {
+                progress += speed;
+            } else {
+                if (frameCount % 120 === 0) isMorphing = true;
+                if (isMorphing && faceProgress < 1) faceProgress += morphSpeed;
+            }
 
+            let pT = easeOutQuart(progress);
+            let fT = easeOutQuart(faceProgress);
+            let currentRevealCount = map(pT, 0, 1, 1, points.length);
+
+            rectMode(CENTER);
+            imageMode(CENTER);
+            textAlign(CENTER, CENTER);
+
+            for (let i = 0; i < floor(currentRevealCount); i++) {
+                let p = points[i];
+
+                // Core lerp positions
+                let rawX = lerp(width / 2, p.x, pT);
+                let rawY = lerp(height / 2, p.y, pT);
+                let targetX = lerp(rawX, p.fx, fT);
+                let targetY = lerp(rawY, p.fy, fT);
+
+                // --- HOVER REACTIVITY ---
+                let mouseDist = dist(mouseX, mouseY, targetX, targetY);
+                let interactionRadius = 150;
+                let isHover = mouseDist < interactionRadius;
+
+                let drawX = targetX;
+                let drawY = targetY;
+                let sizeMult = 1;
+
+                if (mouseDist < interactionRadius) {
+                    // Repulsion
+                    let angle = atan2(targetY - mouseY, targetX - mouseX);
+                    let force = map(mouseDist, 0, interactionRadius, 15, 0);
+                    drawX += cos(angle) * force;
+                    drawY += sin(angle) * force;
+
+                    // Scaling
+                    sizeMult = map(mouseDist, 0, interactionRadius, 2.5, 1);
+                }
+
+                if (progress > 0.98) {
+                    drawAbstractElement(p, drawX, drawY, res * 0.9 * sizeMult, isHover);
+                } else {
+                    let currentSize = lerp(height * 0.35, res, pow(pT, 0.7));
+
+                    if (isHover) {
+                        fill(30, 120, 255); // accent blue on hover
+                    } else {
+                        fill(0);
+                    }
+
+                    textSize(currentSize * sizeMult);
+                    text(
+                        density.charAt(
+                            floor(noise(p.x * 0.1, p.y * 0.1, frameCount * 0.1) * density.length)
+                        ),
+                        drawX,
+                        drawY
+                    );
+                }
+
+            }
+        }
+
+        function drawAbstractElement(p, x, y, size, isHover) {
+            push();
+            translate(x, y);
+
+            if (isMorphing) {
+                translate(random(-0.5, 0.5), random(-0.5, 0.5));
+            }
+
+            if (p.type === 0) {
+                fill(isHover ? color(255, 60, 60) : 0);
+                textSize(size);
+                text(density.charAt(floor(noise(p.seed, frameCount * 0.1) * density.length)), 0, 0);
+            }
+            else if (p.type === 1) {
+                noStroke();
+                fill(isHover ? color(0, 200, 120) : color(0, 180));
+                rect(0, 0, size * 0.8, size * 0.1);
+            }
+            else if (p.type === 2) {
+                stroke(isHover ? color(255, 120, 0) : color(0, 150));
+                strokeWeight(1.5);
+                line(-size / 3, 0, size / 3, 0);
+                line(0, -size / 3, 0, size / 3);
+            }
+            else {
+                if (noise(frameCount * 0.1, p.seed) > 0.2) {
+                    tint(255, isHover ? 255 : 200);
+                    image(thumbnails[p.imgIdx], 0, 0, size, size);
+                    noTint();
+                }
+            }
+
+
+            pop();
+        }
+
+        function easeOutQuart(x) {
+            return 1 - pow(1 - x, 4);
+        }
+
+        function windowResized() {
+            if (!containerEl) return;
+
+            const w = containerEl.clientWidth;
+            const h = containerEl.clientHeight;
+
+            resizeCanvas(w, h);
+
+            pg = createGraphics(w, h);
+            pg.pixelDensity(1);
+
+            updateWordPoints();
+            progress = 0;
+            faceProgress = 0;
+            isMorphing = false;
+        }
     </script>
+
 
 </body>
 
