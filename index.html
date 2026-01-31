@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -24,6 +23,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 
 
@@ -193,13 +193,22 @@
             input.style('outline', 'none');
 
             input.input(() => {
-                updateWordPoints();
+                document.fonts.load("700 16px 'Chakra Petch'").then(() => {
+                    updateWordPoints();
+                }).catch(updateWordPoints);
+
                 progress = 0;
                 faceProgress = 0;
                 isMorphing = false;
             });
 
-            updateWordPoints();
+
+            document.fonts.load("700 16px 'Chakra Petch'").then(() => {
+                updateWordPoints();
+            }).catch(() => {
+                updateWordPoints(); // fallback if fonts API fails
+            });
+
 
             // Hide loading text once p5 is ready
             const loading = document.getElementById('loading-info');
