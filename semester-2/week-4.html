@@ -58,10 +58,11 @@
                         <span class="nav-toggle-symbol">+</span>
                     </button>
                     <ul class="overview-weeks">
-                        <li><a href="semester-2/week-1.html" ><strong>W1</strong> : SEM-1 Review</a></li>
+                        <li><a href="semester-2/week-1.html"><strong>W1</strong> : SEM-1 Review</a></li>
                         <li><a href="semester-2/week-2.html"><strong>W2</strong> : E-8</a></li>
                         <li><a href="semester-2/week-3.html"><strong>W3</strong> : P-6 & GDI Interview</a></li>
-                        <li><a href="semester-2/week-4.html" class="active"><strong>W4</strong> : Exploring Arduino</a></li>
+                        <li><a href="semester-2/week-4.html" class="active"><strong>W4</strong> : Exploring Arduino</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -88,269 +89,324 @@
             <!-- ROW 2 — SPLIT ROW -->
             <section class="exp-row split">
                 <div class="exp-block">
-                    <h3><strong>Identifying Gaps & Direction</strong></h3>
+                    <h3><strong>Getting Started with Arduino</strong></h3>
                 </div>
 
                 <div class="exp-block">
-                    <p>Over the holidays, I received detailed feedback from my lecturers on both my dissertation and
-                        graduation project. This week's consultation provided an opportunity to revisit these comments
-                        together and unpack them more clearly. Through discussion, we clarified key issues around my
-                        <strong>third pillar: exhibition design</strong>, coherence, and how the work should come
-                        together moving forward.
+                    <p>This week was about putting structure in place for my dissertation, while also beginning to make
+                        something physical. I started working with Arduino to move ideas out of the abstract, and into
+                        hands-on experimentation, using simple inputs and outputs to test how interaction and systems
+                        might be expressed materially. I also picked up additional modules such as a camera, button, and
+                        OLED display. These components will be useful for the kinds of interactive Arduino-based
+                        experiments I want to develop moving forward.
                     </p>
                 </div>
             </section>
 
             <section class="exp-row full">
 
-                <a href="https://www.guggenheim.org/exhibition/gary-hill" target="_blank" rel="noopener noreferrer"
-                    style="text-decoration:none; color:inherit; display:block;">
+                <div style="width:100%; aspect-ratio:16/9; overflow:hidden;">
+                    <img src="assets/images/s2-w4-arduino-tools.jpg" alt="Arduino tools"
+                        style="width:100%; height:100%; object-fit:contain;">
+                </div>
 
-                    <div style="width:100%; aspect-ratio:16/9; overflow:hidden;">
-                        <img src="assets/images/s2-w1-hero.jpg" autoplay loop muted playsinline
-                            style="width:100%; height:100%; object-fit:cover;">
-                        </video>
-                    </div>
+                <figcaption style="font-size:12px; text-align:center; margin-top:6px;">
+                    <strong>SuperKit</strong> <em>Arduino</em>
+                </figcaption>
 
-                    <figcaption style="font-size:12px; text-align:left; margin-top:6px;">
-                        <strong>Gary Hill 1995</strong> <em>Guggenheim New York</em>
-                    </figcaption>
-
-                </a>
 
             </section>
 
             <!-- ROW 2 — SPLIT ROW -->
             <section class="exp-row split">
                 <div class="exp-block">
-                    <h3><strong>Feedback Breakdown</strong></h3>
+                    <h3><strong>Joystick + LC Testing</strong></h3>
                 </div>
                 <div class="exp-block">
-                    <h3><strong>"Chapters"</strong></h3>
                     <!-- Clickable image -->
-                    <img src="assets/images/s2-w1-chapters.jpg" alt="" class="lightbox-trigger"
-                        style="width:100%; height:100%; object-fit:contain; flex:1; cursor:pointer;">
+                    <img src="assets/images/s2-w4-joystick-lcd.jpg" alt="" class="lightbox-trigger"
+                        style="width:100%; height:100%; object-fit:contain; flex:1;">
 
                     <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
-                        <strong>"Chapters" as Compartments</strong> <em>Metaphoric Illustration</em>
+                        <strong>Joystick, LCD, Breadboard</strong> <em>Arduino</em>
                     </figcaption>
 
                     <!-- Lightbox modal -->
                     <div id="lightbox" class="lightbox">
                         <img id="lightbox-img" src="" alt="">
                     </div>
-                    <p>During the consultation, the idea of “chapters” was clarified as a metaphor rather than a
-                        structural requirement. Instead of referring to literal book chapters, Andreas described it as a
-                        shelf with multiple compartments, where each compartment represents an experiment. The issue was
-                        not the individual works, but the absence of a clear connective logic that allows them to
-                        function as a coherent whole. This reframing made it evident that my experiments need to be
-                        understood relationally; each one linking to the next under a single unifying pillar.</p>
+                    <p>A case of me trying to fly before I could walk. Instead of first testing whether the joystick
+                        input worked on its own, I attempted to make the joystick and LCD screen function together. When
+                        the LCD failed to work, it highlighted how under-skilled I currently am with Arduino. I went
+                        back to the basics and focused on printing joystick values to the serial console to properly
+                        test and understand how the joystick behaves.</p>
                 </div>
             </section>
 
+            <!-- ROW 2 — SPLIT ROW -->
             <section class="exp-row split">
                 <div class="exp-block">
-                    <p></p>
+                    <h3><strong>Joystick Testing</strong></h3>
                 </div>
+
                 <div class="exp-block">
-                    <h3><strong>Framework</strong></h3>
-                    <!-- Clickable image -->
-                    <img src="assets/images/s2-w1-framework.jpg" alt="" class="lightbox-trigger"
-                        style="width:100%; height:100%; object-fit:contain; flex:1; cursor:pointer;">
-
-                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
-                        <strong>Exhibition Design Framework</strong> <em>Time / Process Flow</em>
-                    </figcaption>
-                    <p>Exhibition design emerged as a useful framework for this, not as a mandatory final outcome, but
-                        as a way to think through sequencing, narrative, and how viewers move from one experiment to
-                        another. While the experiments from Semester 1 may not yet qualify as exhibition-ready works,
-                        they form critical groundwork. The focus moving forward is not to rework them, but to extract
-                        what they reveal and use those insights to inform a conceptual shift towards an
-                        exhibition-oriented direction.</p>
-                </div>
-            </section>
-
-            <section class="exp-row split">
-                <div class="exp-block">
-                    <p></p>
-                </div>
-                <div class="exp-block">
-                    <h3><strong>Dissertation Planning</strong></h3>
-                    <!-- Clickable image -->
-                    <img src="assets/images/s2-w1-diss-structure.jpg" alt="" class="lightbox-trigger"
-                        style="width:100%; height:100%; object-fit:contain; flex:1; cursor:pointer;">
-
-                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
-                        <strong>Dissertation Structure</strong> <em>Process Diagram</em>
-                    </figcaption>
-                    <p>Given the limited timeframe, the dissertation now functions less as documentation of a completed
-                        exhibition and more as a process of planning and articulation. The first half focuses on
-                        conceptualising the exhibition framework, while the second half addresses how this framework
-                        might take shape through design. Rather than attempting to resolve all transitions, the emphasis
-                        is on developing one new prototype in Semester 2 as a transition piece, positioned alongside
-                        Semester 1 works to signal this shift. The discussion section therefore looks both backward and
-                        forward: reflecting on how earlier experiments inform future making, and outlining how these
-                        learnings lead towards an exhibition proposal</p>
-                </div>
-            </section>
-
-            <section class="exp-row split">
-                <div class="exp-block">
-                    <p></p>
-                </div>
-                <div class="exp-block">
-                    <h3><strong>Exhibition Proposal</strong></h3>
-                    <!-- Clickable image -->
-                    <img src="assets/images/s2-w1-context.jpg" alt="" class="lightbox-trigger"
-                        style="width:100%; height:100%; object-fit:contain; flex:1; cursor:pointer;">
-
-                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
-                        <strong>Context / Scale</strong> <em>Diagram</em>
-                    </figcaption>
-
-                    <p>Importantly, this proposal does not need to be realised; it can exist as a speculative
-                        contribution that could sit within a larger exhibition on algorithms, rather than a standalone
-                        curated show. Framing my work as a contributor rather than a curator significantly narrows the
-                        scope and strengthens focus. Moving into the next phase, especially if working with physical
-                        materials, the priority is to strengthen the conceptual grounding of the work: answering why a
-                        material, interaction, or form is chosen before considering technological execution.</p>
-                </div>
-            </section>
-
-            <!-- ROW 1 — FULL WIDTH IMAGE (16:9 landscape) -->
-            <section class="exp-row full">
-                <a href="https://www.guggenheim.org/video/only-the-young-experimental-art-in-korea-1960s-1970s-at-the-guggenheim"
-                    target="_blank" style="text-decoration: none; color: inherit; display:block;">
-
-                    <video src="assets/videos/experimental-art.mp4" autoplay loop muted playsinline
-                        style="width:100%; height:100%; object-fit:cover;">
+                    <!-- Clickable video -->
+                    <video src="assets/videos/s2-w4-arduino-joystick.mp4" class="lightbox-trigger" autoplay loop muted
+                        playsinline style="width:100%; height:100%; object-fit:contain; flex:1;">
                     </video>
 
-                    <figcaption style="font-size: 12px; text-align: left;">
-                        <strong>Only the Young: Experimental Art in Korea, 1960s–1970s</strong>
-                        <em>Guggenheim New York</em>
+                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
+                        <strong>Joystick and R3 Board</strong> <em>Arduino</em>
                     </figcaption>
 
-                </a>
-            </section>
-
-            <!-- ROW 2 — SPLIT ROW -->
-            <section class="exp-row split">
-                <div class="exp-block">
-                    <h3><strong>Case Studies</strong></h3>
-                </div>
-                <div class="exp-block">
-                    <p>To better understand how abstract systems can be translated into tangible, experiential forms, I
-                        researched existing physical works and material-based projects. These case studies demonstrate
-                        clear and intuitive relationship between user input, system response, as well as various
-                        Arduino-OLED projects which explore how small screens, minimal interfaces, and physical controls
-                        can communicate system states.
+                    <p>
+                        After the failed attempt at trying to integrate multiple components, I focused on getting the
+                        joystick to work on its own. Instead of trying to make everything work, I tested the joystick by
+                        printing its values to the Arduino serial console as it was moved or pressed.
                     </p>
+                    <table style="width:100%; border-collapse:collapse; margin-top:20px; font-size:12px;">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Component</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Joystick</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Arduino</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">X-axis</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">VRx</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">A0</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Reads horizontal joystick movement (left / right).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Y-axis</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">VRy</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">A1</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Reads vertical joystick movement (up / down).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Button</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">SW</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">A2</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Detects joystick press input. Using <code>INPUT_PULLUP</code>: <br>pressed =
+                                    <strong>on</strong>, <br>not pressed = <strong>off</strong>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Power</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">+5V</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">5V</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Supplies power to the joystick module.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px;">Ground</td>
+                                <td style="padding:8px;">GND</td>
+                                <td style="padding:8px;">GND</td>
+                                <td style="padding:8px;">
+                                    Ground reference for stable signal readings.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>
             </section>
 
-            <!-- ROW 2 — SPLIT ROW -->
             <section class="exp-row split">
                 <div class="exp-block">
-                    <p></p>
+                    <h3><strong>OLED Print Text</strong></h3>
                 </div>
+
                 <div class="exp-block">
-                    <h3><strong>Materialising the Digital</strong></h3>
-                    <p>Throughout this project <strong>A-I: Algorithmic Identities</strong>, the core concern has been
-                        the <strong>invisibility</strong> of algorithmic systems, and how they quietly shape identity
-                        through datafication, feedback loops, and behavioural influences. While these processes operate
-                        computationally, their effects are lived, embodied, and emotional.</p>
-                    <p>Materialising the project in <strong>physical form</strong> is an important step in translating
-                        abstract algorithmic operations into experiences that can be sensed, encountered, and
-                        questioned. Rather than remaining on screens where algorithmic logic often feels seamless and
-                        intangible, physical materialisation introduces friction, scale, and presence, which makes the
-                        systems that govern our digital identity more perceptible to the body, as well as the mind.</p>
-                </div>
-                <br>
-                <a href="https://jackw01.github.io/pi-tin/" target="_blank"
-                    style="text-decoration:none; color:inherit; display:block;">
+                    <!-- Clickable video -->
+                    <img src="assets/images/s2-w4-print-text.jpg" alt="" class="lightbox-trigger"
+                        style="width:100%; height:100%; object-fit:contain; flex:1;">
 
-                    <figure class="exp-block"
-                        style="margin:0; padding:0; display:flex; flex-direction:column; cursor:pointer;">
-
-                        <img src="assets/images/raspberry-pi.jpg" alt=""
-                            style="width:100%; height:100%; object-fit:cover; flex:1;">
-
-                        <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
-                            <strong>Rev. 2 PCBs</strong> <em>PCBWay</em>
-                        </figcaption>
-
-                    </figure>
-
-                </a>
-            </section>
-
-            <section class="exp-row split">
-                <div class="exp-block">
-                    <h3><strong>Hologram Technology</strong></h3>
-                    <div class="exp-block" style="height:420px; overflow:hidden; display:flex; flex-direction:column;">
-
-                        <a href="https://www.linkedin.com/posts/ilir-aliu_hand-controlled-hologram-boids-most-people-ugcPost-7394996083099209728-fE5X?utm_source=share&utm_medium=member_desktop&rcm=ACoAACvS4E8B2k_k4IE46dCjcSZVtPMDsOFI9x0"
-                            target="_blank" rel="noopener noreferrer" style="flex:1; display:block; overflow:hidden;">
-
-                            <video src="assets/videos/xander-chin.mp4" autoplay loop muted playsinline
-                                style="width:100%; height:100%; object-fit:cover; transform:scale(1.1);">
-                            </video>
-
-                        </a>
-
-                        <figcaption style="font-size:12px; margin-top:10px;">
-                            <strong>Hand-controlled Hologram Boids</strong> <em>Xander Chin and @grok</em>
-                        </figcaption>
-
-                    </div>
-
-                </div><br>
-                <p>No gloves, no depth camera. Just a Pi, a tiny LCD, and a reflective acrylic pyramid. A simple way to
-                    combine CV, simulation, and physical display into something
-                    playful and surprisingly intuitive. <br><br>
-                    • A Raspberry Pi camera tracks your hand with basic computer vision<br>
-                    • A boids simulation runs on the Pi (separation, alignment, cohesion)<br>
-                    • The LCD displays the swarm from a mirrored angle<br>
-                    • The acrylic pyramid reflects it as a floating hologram<br>
-                    • Move your hand closer and the flock follows<br>
-                    <br>
-                </p>
-            </section>
-
-            <section class="exp-row full">
-
-                <a href="https://github.com/AstraThreshold/oled-ui-astra-lite" target="_blank" rel="noopener noreferrer"
-                    style="text-decoration:none; color:inherit; display:block;">
-
-                    <div style="width:100%; aspect-ratio:16/9; overflow:hidden;">
-                        <video src="assets/videos/astra-ui-lite.mp4" autoplay loop muted playsinline
-                            style="width:100%; height:100%; object-fit:cover;">
-                        </video>
-                    </div>
-
-                    <figcaption style="font-size:12px; text-align:left; margin-top:6px;">
-                        <strong>Astra UI Lite v1.0</strong> <em>AstraThreshold</em>
+                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
+                        <strong>OLED Module and R3 Board</strong> <em>Arduino</em>
                     </figcaption>
 
-                </a>
+                    <p>
+                        Next, I tested the OLED display as a basic visual output surface by rendering a single line of
+                        text ("HELLO") using I2C communication between the Arduino Uno and a 0.96' OLED screen. The
+                        Arduino sends data via the I2C protocol (SDA/SCL), which OLED interprets and renders as pixels.
+                        I was so excited when I saw the word appear on the screen. It felt like the system "speaks". It
+                        is a small but critical step toward my later experiments where outputs are shaped by user input
+                        and repetition.
+                    </p>
+                    <table style="width:100%; border-collapse:collapse; margin-top:20px; font-size:12px;">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Component</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">OLED</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Arduino</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Power</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">VCC</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">5V</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Supplies power to the OLED display module.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Ground</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">GND</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">GND</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Shared ground reference for stable communication.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">I2C Data</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">SDA</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">A4</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Transfers display data from the Arduino to the OLED via I2C.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px;">I2C Clock</td>
+                                <td style="padding:8px;">SCL</td>
+                                <td style="padding:8px;">A5</td>
+                                <td style="padding:8px;">
+                                    Synchronises data transmission timing for I2C communication.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
+
+                </div>
             </section>
 
-            <!-- ROW 2 — SPLIT ROW -->
             <section class="exp-row split">
                 <div class="exp-block">
-                    <h3><strong>Findings</strong></h3>
+                    <h3><strong>Simple Animation</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                    <!-- Clickable video -->
+                    <video src="assets/videos/s2-w4-square-animation.mp4" class="lightbox-trigger" autoplay loop muted
+                        playsinline style="width:100%; height:100%; object-fit:contain; flex:1;">
+                    </video>
+
+                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
+                        <strong>OLED Module and R3 Board</strong> <em>Arduino</em>
+                    </figcaption>
+
+                    <p>
+                        To explore the OLED display not as a static output surface, I iterated the earlier tests by
+                        introducing animation through a simple growth sequence where a single square gradually multiples
+                        into five. Rather than appearing all at once, each square emerges sequentially, emphasising
+                        duration, pacing, and accumulation. The animation is driven by a timing loop using millis(),
+                        allowing the system to update the display incrementally without freezing. This transformed the
+                        OLED from a passive display into an active, time-based feedback interface.
+                    </p>
+                    <table style="width:100%; border-collapse:collapse; margin-top:20px; font-size:12px;">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Component</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">OLED</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Arduino</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Power</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">VCC</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">5V</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Supplies power to the OLED display for continuous animation output.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Ground</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">GND</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">GND</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Shared ground reference ensuring stable display communication.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">I2C Data</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">SDA</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">A4</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Sends animation frame data from the Arduino to the OLED display.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">I2C Clock</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">SCL</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">A5</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Synchronises timing for sequential frame updates in the animation.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Square Generator</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">drawRect()</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">OLED drawing function</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Renders each square as a geometric unit, visually representing an individual data
+                                    instance.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Growth Logic</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Stage counter</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">millis() timing</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Controls when new squares appear, simulating gradual accumulation rather than
+                                    instant output.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px;">Layout System</td>
+                                <td style="padding:8px;">Fixed positions</td>
+                                <td style="padding:8px;">Center + cardinal offsets</td>
+                                <td style="padding:8px;">
+                                    Organises the five squares spatially, reinforcing a structured and predictable
+                                    growth pattern.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="exp-row split">
+                <div class="exp-block">
+                    <h3><strong>Challenges Faced</strong></h3>
                 </div>
                 <div class="exp-block">
-                    <p>From these case studies, I learnt that effective physical works prioritise legibility over
-                        complexity. Users should immediately understand how their actions influence the system without
-                        explanation. More importantly, these projects show that material choice and interaction design
-                        are not neutral, they actively shape how systems are perceived. This insight reinforces the need
-                        for my own prototypes to use physical materials <strong>not as decorative outputs</strong>, but
-                        as <strong>deliberate tools</strong> to make invisible computational processes visible,
-                        relatable, and experientially grounded.
-                    </p>
+                    <!-- Clickable image -->
+                    <img src="assets/images/s2-w4-oled-challenges.jpg" alt="" class="lightbox-trigger"
+                        style="width:100%; height:100%; object-fit:contain; flex:1;">
+
+                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
+                        <strong>OLED Module and R3 Board</strong> <em>Arduino</em>
+                    </figcaption>
+
+                    <!-- Lightbox modal -->
+                    <div id="lightbox" class="lightbox">
+                        <img id="lightbox-img" src="" alt="">
+                    </div>
+                    <p>I had so much trouble working with the Arduino. When I was trying to make the LCD work, there was extensive wiring and the wires kept falling out. I was confused about the calibration, how to ground share, power distribute, and different component pin functions. I kept having to seek ChatGPT's help on how to set everything up. Although I managed to get the simple outputs to work, I have to work on trying to make both the joystick and LCD work. In the near future, I will also be planning to add in a camera module... I am scared.</p>
                 </div>
             </section>
 
@@ -423,7 +479,7 @@
             // Set last week per semester (edit SEM 2 when ready)
             const LAST_WEEK_BY_SEMESTER = {
                 1: 15,
-                2: 3
+                2: 4
             };
             const lastWeek = LAST_WEEK_BY_SEMESTER[semester] ?? 15;
 
