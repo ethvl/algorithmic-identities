@@ -1524,21 +1524,28 @@ figure.exp-block figcaption {
 
 /*lightbox image*/
 .lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.75);
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: none;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
-    cursor: pointer;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 999999 !important;
 }
 
-.lightbox img {
-    max-width: 90%;
-    max-height: 90%;
+.lightbox.active {
+    display: flex;
+}
+
+#lightbox-img {
+    max-width: 92vw;
+    max-height: 92vh;
     object-fit: contain;
 }
+
 
 .handwritten {
     font-family: "Just Me Again Down Here", cursive;
@@ -1565,7 +1572,7 @@ figure.exp-block figcaption {
     background: #f0f0f0;
     padding: 8px;
     border-radius: 8px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
     z-index: 9999;
 }
 
@@ -1574,7 +1581,7 @@ figure.exp-block figcaption {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.35);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease;
