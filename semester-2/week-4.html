@@ -406,7 +406,234 @@
                     <div id="lightbox" class="lightbox">
                         <img id="lightbox-img" src="" alt="">
                     </div>
-                    <p>I had so much trouble working with the Arduino. When I was trying to make the LCD work, there was extensive wiring and the wires kept falling out. I was confused about the calibration, how to ground share, power distribute, and different component pin functions. I kept having to seek ChatGPT's help on how to set everything up. Although I managed to get the simple outputs to work, I have to work on trying to make both the joystick and LCD work. In the near future, I will also be planning to add in a camera module... I am scared.</p>
+                    <p>I had so much trouble working with the Arduino. When I was trying to make the LCD work, there was
+                        extensive wiring and the wires kept falling out. I was confused about the calibration, how to
+                        ground share, power distribute, and different component pin functions. I kept having to seek
+                        ChatGPT's help on how to set everything up. Although I managed to get the simple outputs to
+                        work, I have to work on trying to make both the joystick and LCD work. In the near future, I
+                        will also be planning to add in a camera module... I am scared.</p>
+                </div>
+            </section><br><br><br><br>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split">
+                <div class="exp-block">
+                    <h3><strong>p5.js x Arduino</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                    <p>Moving beyond Arduino itself, I explored how physical inputs can be extended into a computational
+                        visual environment using <strong>p5.js</strong>. Physical inputs are translated into numerical
+                        data streams that drive dynamic, screen-based visuals. Multple components were tested as inputs
+                        during this process. These inputs were not used to trigger fixed outcomes, but to continuously
+                        influence visual behaviour, allowing the system to respond gradually rather than discretely.
+                        This approach shifts the interaction from simple cause-and-effect toward feedback-based
+                        relationships, where physical actions shape visual tendencies such as attraction, repulsion,
+                        growth, or dispersion over time.
+                    </p>
+                </div>
+            </section>
+
+            <section class="exp-row split">
+                <div class="exp-block">
+                    <h3><strong>Ultrasonic Sensor Testing</strong></h3>
+                    <!-- Clickable video -->
+                    <video src="assets/videos/s2-w4-ultrasonic-testing.mp4" class="lightbox-trigger" autoplay loop
+                        muted playsinline style="width:100%; height:100%; object-fit:contain; flex:1;">
+                    </video>
+
+                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
+                        <strong>Ultrasonic Sensor and R3 Board</strong> <em>Arduino</em>
+                    </figcaption>
+
+                    <p>
+                        Before integrating the sensor into more complex visual systems, I conducted a simple Arduino
+                        test to confirm that distance measurements could be accurately captured and interpreted. The
+                        sensor was connected to the Arduino Uno, and its readings were output directly to the Serial
+                        Monitor as numerical values representing distance in centimetres.
+                    </p>
+                    <table style="width:100%; border-collapse:collapse; margin-top:20px; font-size:12px;">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Component</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Ultrasonic</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Arduino</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Power</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">VCC</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">5V</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Supplies power to the ultrasonic sensor for distance measurement.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Ground</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">GND</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">GND</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Provides a shared ground reference required for accurate signal timing.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Trigger Signal</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Trig</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">A3</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Sends a short pulse to initiate an ultrasonic distance measurement.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px;">Echo Signal</td>
+                                <td style="padding:8px;">Echo</td>
+                                <td style="padding:8px;">A4</td>
+                                <td style="padding:8px;">
+                                    Receives the reflected ultrasonic pulse and is used to calculate distance based on
+                                    time delay.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </section>
+
+            <section class="exp-row split">
+                <div class="exp-block">
+                    <h3><strong>Input to Output</strong></h3>
+                    <!-- Clickable video -->
+                    <video src="assets/videos/s2-w4-ultrasonic-p5js.mp4" class="lightbox-trigger" autoplay loop muted
+                        playsinline style="width:100%; height:100%; object-fit:contain; flex:1;">
+                    </video>
+
+                    <figcaption style="font-size:12px; margin-top:20px; text-align:center;">
+                        <strong>Ultrasonic Sensor and R3 Board</strong> <em>Arduino</em>
+                    </figcaption>
+
+                    <p>
+                        In this mini experiment, the ultrasonic sensor measures the distance in real time and sends
+                        numerical values from Arduino to p5.js via USB. In p5.js, these values are continuously read and
+                        mapped to visual parameters rather than triggering fixed events.
+                    </p>
+                    <p>Shorter distances causes circles to move closer together, creating attraction. While larger
+                        distances push them apart, producing repulsion. This transition turns bodily proximity into a
+                        behavioural rule that unfolds over time. The system operates as a feedback loop where physical
+                        movement influences visual tendencies rather than producing disrcrete, instantaneous outputs.
+                    </p>
+                    <table style="width:100%; border-collapse:collapse; margin-top:20px; font-size:12px;">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Component</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">System UI</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Connection</th>
+                                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Microcontroller</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Arduino Uno R3</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">USB cable</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Reads physical sensor input and sends numerical data to the computer via serial
+                                    communication.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Sensor Data</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Ultrasonic distance value</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Serial.println()</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Transmits real-time distance measurements from Arduino to p5.js as a continuous data
+                                    stream.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Serial Protocol</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">USB Serial (9600 baud)</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Serial.begin(9600)</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Defines the communication speed and format for data exchange between Arduino and
+                                    p5.js.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Browser Interface</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">p5.js (Web Serial)</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">navigator.serial</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Requests access to the Arduino’s serial port and receives incoming sensor data.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">Data Parsing</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">JavaScript buffer</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">TextDecoder + newline split</td>
+                                <td style="padding:8px; border-bottom:1px solid #eee;">
+                                    Converts raw serial bytes into readable numerical values usable by the visual
+                                    system.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px;">Visual Output</td>
+                                <td style="padding:8px;">p5.js canvas</td>
+                                <td style="padding:8px;">Mapped distance values</td>
+                                <td style="padding:8px;">
+                                    Translates physical distance into visual behaviour (attraction or repulsion of
+                                    circles).
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </section>
+
+            <section class="exp-row full">
+
+                <div style="width:100%; aspect-ratio:16/9; overflow:hidden;">
+                    <video src="assets/videos/s2-w4-p5js-demo.mp4" autoplay loop muted playsinline
+                        style="width:100%; height:100%; object-fit:cover;">
+                    </video>
+                </div>
+
+                <figcaption style="font-size:12px; text-align:left; margin-top:6px;">
+                    <strong>Ultrasonic Sensor → Arduino</strong> <em>Demo</em>
+                </figcaption>
+
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split">
+                <div class="exp-block">
+                    <h3><strong>Future Considerations</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                    <h3><strong>Sensor Selection and Technical Considerations</strong></h3>
+                    <p>The ultrasonic sensor functions within 305cm. It uses two "eyes", one emits sound waves, while
+                        the other receives the reflected signal, calculating distance based on time travel. However,
+                        since it relies on sound, obstructing the speaker affects its accuracy. As an alternative, a
+                        photoresistor performs well at close distances and allow near-contact interaction. An
+                        <strong>infrared sensor</strong> would be a better option as it provides proximity data without
+                        relying on sound transmission.
+                    </p><br>
+                    <h3><strong>Hardware Limitations</strong></h3>
+                    <p>Using a camera directly with Arduino was not recommended as Arduino Boards are not designed to
+                        process camera data efficiently. For camera-based systems or higher computational demands,
+                        <strong>Raspberry Pi or ESP boards</strong> would be more suitable. Similarly, LCD screens
+                        connected to Arduino have low frame rates.
+                    </p><br>
+                    <h3><strong>System Integration</strong></h3>
+                    <p>If higher processing power is required, combining Arduino with a laptop is a viable approach, The laptop can handle computation and visuals while Arduino manages sensor input. For exhibition purposes, the laptop can be concealed and connected via longer cables to maintain a clean presentation setup.
+                    </p><br>
+                    <h3><strong>Conceptual Direction</strong></h3>
+                    <p>After consultation, I realised the importance of clarifying the concept before selecting components. Without a clear idea, hardware decisions become arbitrary and difficult to manage. When working with Arduino, simplicity is key. Limit the system to one or two components, with a maximum of three, to maintain clarity, stability, and conceptual focus.
+                    </p>
                 </div>
             </section>
 
