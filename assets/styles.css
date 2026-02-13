@@ -1598,6 +1598,69 @@ figure.exp-block figcaption {
     opacity: 1;
 }
 
+/*SLIDESHOW*/
+.slideshow-container {
+    position: relative;
+    width: 100%;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide figcaption {
+    font-size: 12px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+/* DOTS */
+/* DOTS CONTAINER */
+.dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* BASE DOT STYLE */
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 6px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.3s ease;
+    opacity: 0.4;
+}
+
+/* INDIVIDUAL DOT COLOURS */
+.dot:nth-child(1) {
+    background-color: #ec008c;
+}
+
+.dot:nth-child(2) {
+    background-color: #0F13FF;
+}
+
+.dot:nth-child(3) {
+    background-color: #FFFB00;
+}
+
+/* ACTIVE STATE */
+.dot.active {
+    opacity: 1;
+}
 
 
 
