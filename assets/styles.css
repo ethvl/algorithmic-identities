@@ -1478,6 +1478,19 @@ figure.exp-block figcaption {
     /* adjust this number */
 }
 
+.exp-row.three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+@media (max-width: 900px) {
+    .exp-row.three {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 .launch-btn {
     background: #000;
     color: #fff;
