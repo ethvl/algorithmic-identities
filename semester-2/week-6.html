@@ -265,9 +265,171 @@
                 </div>
 
                 <div class="exp-block">
-                    <p>Building this system in TouchDesigner was far more frustrating than I expected. Every time I reopened the file, the camera would stop communicating with MediaPipe, nodes would disappear, or connections would break. What worked perfectly one night would fail the next morning, probably a skill issue of mine. I rebuilt the network from scratch five separate times. I had to reconfigure the system, re-parse JSON, reconstruct the landmark tables, only for it to face the same instability again.</p>
-                    <p>The inconsistency made it difficult to focus on refining the interaction itself, because I was constantly troubleshooting technical breakdowns instead of developing the concept. At this stage, I have no time to lose. I chose to stop fighting the software environment, and move the work to the web, where eveyrthing is more stable.</p>
+                    <p>Building this system in TouchDesigner was far more frustrating than I expected. Every time I
+                        reopened the file, the camera would stop communicating with MediaPipe, nodes would disappear, or
+                        connections would break. What worked perfectly one night would fail the next morning, probably a
+                        skill issue of mine. I rebuilt the network from scratch five separate times. I had to
+                        reconfigure the system, re-parse JSON, reconstruct the landmark tables, only for it to face the
+                        same instability again.</p>
+                    <p>The inconsistency made it difficult to focus on refining the interaction itself, because I was
+                        constantly troubleshooting technical breakdowns instead of developing the concept. At this
+                        stage, I have no time to lose. I chose to stop fighting the software environment, and move the
+                        work to the web, where eveyrthing is more stable.</p>
                 </div>
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split">
+                <div class="exp-block">
+                    <h3><strong>Prototype 6: Face Value</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                    <div class="exp-block" style="overflow:hidden;">
+                        <video src="assets/videos/e2-hover.mp4" autoplay muted loop playsinline alt=""
+                            style="width:100%; object-fit:contain; flex:1; transform-origin:center; margin-bottom:20px; border: 0;"></video>
+                    </div>
+                    <p>Expanding from <strong>Prototype 6: Feed Your Garden's</strong>, where user words plant a seed
+                        and blooms into flora in the system, I began questioning what really happens when personal
+                        expression enters an algorithmic environment. Rapoport's work became a key reference here. In
+                        her work, intimate, subjective data like how people feel about their shoes, was translated into
+                        numerical values and visual maps. This transformation of lived, emotional information into
+                        computable form directly echoed my own interest in how identities are flattened when processed
+                        by systems.</p>
+                    <p>I started by asking: <em>what really happens when our words meet a system?</em> In my research, I
+                        kept returning to how algorithms read patterns and signals, and reduce human data inputs by
+                        reducing rich behaviours into simplified categories, metrics, and features.<em> What if I made
+                            that reduction
+                            visible?</em> That led me to use ASCII as a way to expose this reduction.</p>
+                    <p><strong>Experiment 2</strong> becomes a descendant of both <strong>Prototype 1</strong> and
+                        Rapoport's methodology: <em>reveal what is
+                            usually invisible,</em> the moment where lived experience becomes data, and where identity
+                        is quietly
+                        reshaped through reduction.</p>
+                    <p>Read more about the algorithmic process breakdown in <strong>Experiment 2's Catalogue of
+                            Making.</strong></p>
+                    <!-- BUTTON ALIGNED TO LEFT, AT BOTTOM -->
+                    <a href="https://editor.p5js.org/ethel.limpy/full/u2jd9r3g5" class="launch-btn"
+                        style="font-size: 14px; padding:6px 14px; margin-top:20px; display:inline-block;"
+                        target="_blank">
+                        Try Experiment 2
+                    </a>
+                    <!-- BUTTON: Link to Experiment 2's Catalogue of Making -->
+                    <a href="experiments/experiment-2.html" class="launch-btn-revert"
+                        style="font-size: 14px; padding:6px 14px; margin-top:20px; display:inline-block;">
+                        Catalogue of Making (Experiment 2)
+                    </a>
+                </div>
+            </section>
+
+            <!-- ROW 1 — FULL WIDTH IMAGE (16:9 landscape) -->
+            <section class="exp-row full" style="margin-top:-20px;">
+                <img src="assets/images/w8-e2.png" alt="" style="object-fit: contain;">
+                <figcaption style="font-size: 12px; text-align: left;"><strong>Text Reduction</strong><em>
+                        p5.js</em></figcaption>
+            </section>
+
+            <section class="exp-row split" style="margin-top:-80px;">
+                <div class="exp-block">
+                    <p>I first defined four <strong>ASCII</strong> “shape families”:
+                    <p>
+                        ⑴ Short Words (Circles): <strong><mark>o O @•</mark></strong>
+                        <br>⑵ Long Words (Squares): <strong><mark># ▓ ░ +</mark></strong>
+                        <br>⑶ Starting with Vowels (Triangles): <strong><mark>^ /\\ ></mark></strong>
+                        <br>⑷ Ending with Punctuation (Lines): <strong><mark>| / \\</mark></strong><br><br>
+                    </p>
+                </div>
+
+                <div class="exp-block">
+                    <p>
+                        I assigned rules to each of the <strong>ASCII</strong> shape families to classify each word
+                        based on
+                        length, vowel beginnings,
+                        or punctuation endings. From there, I seeked <strong>ChatGPT's</strong> help to create a dynamic
+                        grid that
+                        regenerates based on what the user types. The density of the grid increases as more words are
+                        entered, while the <strong>ASCII</strong> size shrinks as input grows, making the visual feel
+                        increasingly
+                        compressed like the process of reduction. The key function
+                        <strong><em>(getAsciiSetForWord)</em></strong>
+                        determines which ASCII family the system
+                        will use. With <strong>ChatGPT's</strong> help I managed to make
+                        <strong><em>regeneratePattern()</em></strong> rebuild the
+                        entire field of characters each time, ensuring that the grid
+                        visually reflects the user's input. Through these rules, the
+                        technical process reenacts the computational reduction that inspired the experiment.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split" style="margin-bottom: 60px;">
+                <div class="exp-block">
+                    <h3><strong>Visual Archive</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                </div>
+            </section>
+
+            <section class="exp-row cols-4">
+
+                <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
+                    <img src="assets/images/e2-1.png" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                </figure>
+
+                <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
+                    <img src="assets/images/e2-2.png" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                </figure>
+
+                <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
+                    <img src="assets/images/e2-5.png" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                </figure>
+
+                <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
+                    <img src="assets/images/e2-4.png" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                </figure>
+
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split">
+                <div class="exp-block">
+                    <h3><strong>Challenges Faced</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                    <p>The biggest difficulty was making the <strong><em>regeneratePattern()</em></strong> rebuild the
+                        grid
+                        properly. ASCII characters behave unpredictably at different scales, so keeping the grid
+                        readable while still reacting dynamically to user input required repeated recalibration of
+                        spacing, density, and cell size.</p>
+                    <p>Another issue was designing rules that feel “algorithmic” without becoming overly literal. Early
+                        versions produced patterns that looked random rather than meaningfully reduced, forcing me to
+                        refine classification logic (vowels, punctuation, length) so users could sense the system’s
+                        “reasoning.”</p>
+                    <p>Reducing text without drifting into sentiment analysis or real semantic interpretation, meant
+                        constantly rethinking the rules to ensure the system behaves like a classifier, not an
+                        interpreter.</p>
+                </div>
+            </section>
+
+            <!-- ROW 4 — FULL WIDTH VIDEO -->
+            <section class="exp-row full">
+                <div style="position:relative; width:100%; padding-bottom:56.25%; overflow:hidden;">
+                    <iframe
+                        src="https://player.vimeo.com/video/1141836609?badge=0&autopause=0&player_id=0&app_id=58479&muted=1&autoplay=1&loop=1&background=1"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+                        title="Experiment Demo">
+                    </iframe>
+                </div>
+
+                <figcaption style="font-size: 12px; text-align: center;">
+                    <strong>Experiment 2 Demo</strong><em> Vimeo</em>
+                </figcaption>
             </section>
 
 
