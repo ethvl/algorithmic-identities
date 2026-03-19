@@ -1717,28 +1717,14 @@ figure.exp-block figcaption {
 
 .feature-grid {
     display: grid;
-    grid-template-columns: 1fr 1.4fr; /* left smaller, right larger */
+    grid-template-columns: 1.4fr 1fr;
     grid-template-rows: auto auto;
     gap: 16px;
     margin-bottom: 120px;
 }
 
-/* BIG IMAGE on the RIGHT */
-.feature-large {
-    grid-column: 2;
+.feature-grid .feature-large {
     grid-row: 1 / span 2;
-}
-
-/* First small image (top left) */
-.feature-grid > div:nth-child(2) {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-/* Second small image (bottom left) */
-.feature-grid > div:nth-child(3) {
-    grid-column: 1;
-    grid-row: 2;
 }
 
 .feature-grid img {
