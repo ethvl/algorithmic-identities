@@ -71,7 +71,8 @@
                         <li><a href="semester-2/week-4.html"><strong>W4</strong> : Exploring Arduino</a></li>
                         <li><a href="semester-2/week-5.html"><strong>W5</strong> : Exhibit 3D Model</a></li>
                         <li><a href="semester-2/week-6.html" class="active"><strong>W6</strong> : P-6</a></li>
-                        <li><a href="semester-2/week-7.html"><strong>W7</strong> : </a></li>
+                        <li><a href="semester-2/week-7.html"><strong>W7</strong> : Exhibit
+                                Critique</a></li>
                         <li><a href="semester-2/week-8.html"><strong>W8</strong> : </a></li>
                         <li><a href="semester-2/week-9.html"><strong>W9</strong> : </a></li>
                         <li><a href="semester-2/week-10.html"><strong>W10</strong> : </a></li>
@@ -288,9 +289,20 @@
                         <video src="assets/videos/p6-hover.mp4" autoplay muted loop playsinline alt=""
                             style="width:100%; object-fit:contain; flex:1; transform-origin:center; margin-bottom:20px; border: 0;"></video>
                     </div>
-                    <p><strong>Prototype 6: Face Value</strong> confronts the first threshold of the exhibit: <em>Biometric Data</em>. It makes visible the technical process behind biometric capture. As participants stand before the camera, their faces are not interpreted as expressions, but decomposed into measurable landmarks such as eyes, nose, mouth. Each translated into coordinate points and bounding boxes. What appears on the screen is not simply a facial overlay. It is a computational breakdown of <em>detection → landmark mapping → value extraction → categorisation</em>.</p>
-                    <p>This step-by-step reduction exposes datafication at work. The face becomes a dataset, parsed into numerical features that can be stored, compared, and classified. From this, a Data Double emerges (Haggerty and Ericson 2000): a version of the self composed of metrics rather than memory or intention.</p>
-                    <p>By revealing the extraction process live, the prototype confronts viewers with the mechanics of algorithmic identity; where recognition begins as measurement, and personhood is reformatted into machine-readable code.</p>
+                    <p><strong>Prototype 6: Face Value</strong> confronts the first threshold of the exhibit:
+                        <em>Biometric Data</em>. It makes visible the technical process behind biometric capture. As
+                        participants stand before the camera, their faces are not interpreted as expressions, but
+                        decomposed into measurable landmarks such as eyes, nose, mouth. Each translated into coordinate
+                        points and bounding boxes. What appears on the screen is not simply a facial overlay. It is a
+                        computational breakdown of <em>detection → landmark mapping → value extraction →
+                            categorisation</em>.</p>
+                    <p>This step-by-step reduction exposes datafication at work. The face becomes a dataset, parsed into
+                        numerical features that can be stored, compared, and classified. From this, a Data Double
+                        emerges (Haggerty and Ericson 2000): a version of the self composed of metrics rather than
+                        memory or intention.</p>
+                    <p>By revealing the extraction process live, the prototype confronts viewers with the mechanics of
+                        algorithmic identity; where recognition begins as measurement, and personhood is reformatted
+                        into machine-readable code.</p>
                     <p>Read more about the algorithmic process breakdown in <strong>Prototype 6's Catalogue of
                             Making.</strong></p>
                     <!-- BUTTON ALIGNED TO LEFT, AT BOTTOM -->
@@ -316,11 +328,25 @@
 
             <section class="exp-row split" style="margin-top:-80px;">
                 <div class="exp-block">
-                    <p>I developed <strong>Face Value</strong> through an iterative dialogue with <strong>Gemini 3</strong> in Google's AI Studio, where I translated my conceptual intent into functional instructions. I described how the screen should mirror the familiarity of Face ID where users see themselves framed and scanned. It is reframed as a critical illustration rather than a seamless authentication tool. Gemini helped generate the foundational files, which I refined to align with the exhibit's focus on biometric data. The system uses MediaPipe to detect and isolate facial landmarks such as left eye, right eye, nose, and mouth. It turns each landmark into measurable coordinates displayed live on screen.</p>
+                    <p>I developed <strong>Face Value</strong> through an iterative dialogue with <strong>Gemini
+                            3</strong> in Google's AI Studio, where I translated my conceptual intent into functional
+                        instructions. I described how the screen should mirror the familiarity of Face ID where users
+                        see themselves framed and scanned. It is reframed as a critical illustration rather than a
+                        seamless authentication tool. Gemini helped generate the foundational files, which I refined to
+                        align with the exhibit's focus on biometric data. The system uses MediaPipe to detect and
+                        isolate facial landmarks such as left eye, right eye, nose, and mouth. It turns each landmark
+                        into measurable coordinates displayed live on screen.</p>
                 </div>
 
                 <div class="exp-block">
-                    <p>To make the process explicit, I extended the functionality beyond basic landmark detection. The prototype calculates distances between features, between the eyes, from nose to eyes, nose to mouth. First in coordinates, and then converted into accurate centimetres to simulate bodily quantification. What users see in the bottom left console is the raw numerical trace of their face. They can export their capture as a full-frame image, or a cropped biometric box. Once stored, these entries accumulate in a shared database. The result is not just a scan, but a growing archive of data: faces abstracted into metrics, stored as comparable units rather than individuals.</p>
+                    <p>To make the process explicit, I extended the functionality beyond basic landmark detection. The
+                        prototype calculates distances between features, between the eyes, from nose to eyes, nose to
+                        mouth. First in coordinates, and then converted into accurate centimetres to simulate bodily
+                        quantification. What users see in the bottom left console is the raw numerical trace of their
+                        face. They can export their capture as a full-frame image, or a cropped biometric box. Once
+                        stored, these entries accumulate in a shared database. The result is not just a scan, but a
+                        growing archive of data: faces abstracted into metrics, stored as comparable units rather than
+                        individuals.</p>
                 </div>
             </section>
 
@@ -337,19 +363,23 @@
             <section class="exp-row cols-4">
 
                 <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
-                    <img src="assets/images/face-value-crop-1.jpg" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                    <img src="assets/images/face-value-crop-1.jpg"
+                        style="width:100%; height:100%; object-fit:cover; flex:1;">
                 </figure>
 
                 <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
-                    <img src="assets/images/face-value-crop-2.jpg" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                    <img src="assets/images/face-value-crop-2.jpg"
+                        style="width:100%; height:100%; object-fit:cover; flex:1;">
                 </figure>
 
                 <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
-                    <img src="assets/images/face-value-crop-3.jpg" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                    <img src="assets/images/face-value-crop-3.jpg"
+                        style="width:100%; height:100%; object-fit:cover; flex:1;">
                 </figure>
 
                 <figure class="exp-block" style="margin:0; padding:0; display:flex; flex-direction:column;">
-                    <img src="assets/images/face-value-crop-4.jpg" style="width:100%; height:100%; object-fit:cover; flex:1;">
+                    <img src="assets/images/face-value-crop-4.jpg"
+                        style="width:100%; height:100%; object-fit:cover; flex:1;">
                 </figure>
 
             </section>
