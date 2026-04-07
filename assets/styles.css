@@ -1926,6 +1926,39 @@ figure.exp-block figcaption {
     margin-top: 40px;
 }
 
+.exp-gallery-tall {
+    display: grid;
+    gap: 20px;
+}
+
+.exp-gallery-tall .exp-block img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.exp-gallery-tall figcaption {
+    font-size: 12px;
+    margin-top: 8px;
+    text-align: left;
+}
+
+/* default (3 images) */
+.exp-gallery-tall {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* 2-column layout */
+.exp-gallery-2col {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* 🔥 Increase height ONLY for 2-col */
+.exp-gallery-2col .exp-block img {
+    height: 500px;
+    /* adjust as you like */
+}
 
 /* -----------------------------------------
    RESPONSIVE (unchanged)
