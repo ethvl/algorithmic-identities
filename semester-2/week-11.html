@@ -498,22 +498,135 @@
                         SinPrint</em></figcaption>
             </section>
 
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split" style="margin-bottom: -20px;">
+                <div class="exp-block">
+                    <h3><strong>Publication — A (Body as Data)</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                </div>
+            </section>
+
+            <!-- PUBLICATION SLIDESHOWS -->
+            <section class="exp-row full"
+                style="display:flex; justify-content:center; margin:40px 0; margin-bottom: 100px;">
+                <div id="slideshowContainer"
+                    style="position:relative; width:100%; border: 2px solid #000; border-radius:12px; padding:0; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">
+
+                    <!-- Slideshow image -->
+                    <img id="slideImg" src="assets/images/p1-zine-1.png"
+                        style="width:100%; height:100%; object-fit:contain; display:block;">
+
+                    <!-- Left arrow -->
+                    <button class="week-nav-btn" id="prevSlide"
+                        style="position:absolute; top:50%; left:16px; transform:translateY(-50%);">&#8592;</button>
+
+                    <!-- Right arrow -->
+                    <button class="week-nav-btn" id="nextSlide"
+                        style="position:absolute; top:50%; right:16px; transform:translateY(-50%);">&#8594;</button>
+                </div>
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split" style="margin-bottom: -20px;">
+                <div class="exp-block">
+                    <h3><strong>Publication — B (Actions as Data)</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                </div>
+            </section>
+
+            <!-- PUBLICATION SLIDESHOWS -->
+            <section class="exp-row full"
+                style="display:flex; justify-content:center; margin:40px 0; margin-bottom: 100px;">
+                <div id="slideshowContainer2"
+                    style="position:relative; width:100%; border: 2px solid #000; border-radius:12px; padding:0; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">
+
+                    <!-- Slideshow image -->
+                    <img id="slideImg2" src="assets/images/p2-zine-1.png"
+                        style="width:100%; height:100%; object-fit:contain; display:block;">
+
+                    <!-- Left arrow -->
+                    <button class="week-nav-btn" id="prevSlide2"
+                        style="position:absolute; top:50%; left:16px; transform:translateY(-50%);">&#8592;</button>
+
+                    <!-- Right arrow -->
+                    <button class="week-nav-btn" id="nextSlide2"
+                        style="position:absolute; top:50%; right:16px; transform:translateY(-50%);">&#8594;</button>
+                </div>
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split" style="margin-bottom: -20px;">
+                <div class="exp-block">
+                    <h3><strong>Publication — C (Data as Representation)</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                </div>
+            </section>
+
+            <!-- PUBLICATION SLIDESHOWS -->
+            <section class="exp-row full"
+                style="display:flex; justify-content:center; margin:40px 0; margin-bottom: 100px;">
+                <div id="slideshowContainer3"
+                    style="position:relative; width:100%; border: 2px solid #000; border-radius:12px; padding:0; box-sizing:border-box; display:flex; align-items:center; justify-content:center;">
+
+                    <!-- Slideshow image -->
+                    <img id="slideImg3" src="assets/images/p3-zine-1.png"
+                        style="width:100%; height:100%; object-fit:contain; display:block;">
+
+                    <!-- Left arrow -->
+                    <button class="week-nav-btn" id="prevSlide3"
+                        style="position:absolute; top:50%; left:16px; transform:translateY(-50%);">&#8592;</button>
+
+                    <!-- Right arrow -->
+                    <button class="week-nav-btn" id="nextSlide3"
+                        style="position:absolute; top:50%; right:16px; transform:translateY(-50%);">&#8594;</button>
+                </div>
+            </section>
+
+            <section class="exp-row split" style="margin-top:-80px;">
+                <div class="exp-block">
+                    <p>These slideshows showcase the publication designs I created under tight deadlines. While I am not
+                        entirely pleased with the design, as it was produced quickly during crunch time, they serve to
+                        communicate the key points of each prototype stage. I intentionally kept the publications short
+                        and minimal, providing just enough information to explain which part of the prototype each
+                        relates to, what it does, how it works, and its purpose.</p>
+                </div>
+
+                <div class="exp-block">
+                    <p>For the viva voce, I plan to refine these designs and reconsider the format. I may either keep
+                        three separate publications for each stage or consolidate everything into a single, cohesive
+                        publication, ensuring the information is clear, accessible, and visually polished.</p>
+                </div>
+            </section>
+
+            <!-- ROW 2 — SPLIT ROW -->
+            <section class="exp-row split" style="margin-bottom: 10px;">
+                <div class="exp-block">
+                    <h3><strong>Final Table Setup</strong></h3>
+                </div>
+
+                <div class="exp-block">
+                </div>
+            </section>
+
+
             <!-- ROW 4 — FULL WIDTH VIDEO -->
             <section class="exp-row full">
-                <div style="position:relative; width:100%; padding-bottom:56.25%; overflow:hidden;">
+                <div style="position:relative; width:100%; padding-bottom:56.25%; overflow:hidden; margin-top: 10px;">
 
                     <video src="assets/videos/s2-w11-table-setup.mp4" autoplay loop muted playsinline
                         style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;">
                     </video>
 
                 </div>
-
-                <figcaption style="font-size: 12px; text-align: center;">
-                    <strong>Final Table Setup</strong>
-                </figcaption>
             </section>
 
-            <section class="exp-row split" style="margin-top:-80px;">
+            <section class="exp-row split" style="margin-top:-100px;">
                 <div class="exp-block">
                     <p>This video shows the full Open Studios table setup and how each element was arranged to support
                         the project experience. I displayed the project title, key statements, and the formula so that
@@ -669,6 +782,68 @@
                     lightboxImg.src = "";
                 });
             }
+
+            const slides = [
+                "/assets/images/p1-zine-1.png",
+                "/assets/images/p1-zine-2.png",
+                "/assets/images/p1-zine-3.png",
+                "/assets/images/p1-zine-4.png",
+                "/assets/images/p1-zine-5.png",
+                "/assets/images/p1-zine-6.png"
+            ];
+
+            let currentSlide = 0;
+            const slideImg = document.getElementById("slideImg");
+
+            document.getElementById("prevSlide").addEventListener("click", () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                slideImg.src = slides[currentSlide];
+            });
+
+            document.getElementById("nextSlide").addEventListener("click", () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                slideImg.src = slides[currentSlide];
+            });
+
+            const slides2 = [
+                "/assets/images/p2-zine-1.png",
+                "/assets/images/p2-zine-2.png",
+                "/assets/images/p2-zine-3.png",
+                "/assets/images/p2-zine-4.png"
+            ];
+
+            let currentSlide2 = 0;
+            const slideImg2 = document.getElementById("slideImg2");
+
+            document.getElementById("prevSlide2").addEventListener("click", () => {
+                currentSlide2 = (currentSlide2 - 1 + slides2.length) % slides2.length;
+                slideImg2.src = slides2[currentSlide2];
+            });
+
+            document.getElementById("nextSlide2").addEventListener("click", () => {
+                currentSlide2 = (currentSlide2 + 1) % slides2.length;
+                slideImg2.src = slides2[currentSlide2];
+            });
+
+            const slides3 = [
+                "/assets/images/p3-zine-1.png",
+                "/assets/images/p3-zine-2.png",
+                "/assets/images/p3-zine-3.png",
+                "/assets/images/p3-zine-4.png"
+            ];
+
+            let currentSlide3 = 0;
+            const slideImg3 = document.getElementById("slideImg3");
+
+            document.getElementById("prevSlide3").addEventListener("click", () => {
+                currentSlide3 = (currentSlide3 - 1 + slides3.length) % slides3.length;
+                slideImg3.src = slides3[currentSlide3];
+            });
+
+            document.getElementById("nextSlide3").addEventListener("click", () => {
+                currentSlide3 = (currentSlide3 + 1) % slides3.length;
+                slideImg3.src = slides3[currentSlide3];
+            });
 
         });
     </script>
