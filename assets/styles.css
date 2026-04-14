@@ -1960,6 +1960,83 @@ figure.exp-block figcaption {
     /* adjust as you like */
 }
 
+#flipbook {
+    width: 100%;
+    max-width: 800px;
+    height: 65vh;
+    margin: 40px auto;
+}
+
+.flipbook-title {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+#flipbook-2 {
+    width: 100%;
+    max-width: 800px;
+    height: 65vh;
+    margin: 40px auto;
+}
+
+.flipbook-2-title {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+#flipbook-3 {
+    width: 100%;
+    max-width: 800px;
+    height: 65vh;
+    margin: 40px auto;
+}
+
+.flipbook-3-title {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+#flipbook-4 {
+    width: 100%;
+    max-width: 800px;
+    height: 65vh;
+    margin: 40px auto;
+}
+
+.flipbook-4-title {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+#flipbook-5 {
+    width: 100%;
+    max-width: 800px;
+    height: 65vh;
+    margin: 40px auto;
+}
+
+.flipbook-5-title {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+
+
 /* -----------------------------------------
    RESPONSIVE (unchanged)
 ----------------------------------------- */
