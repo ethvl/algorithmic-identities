@@ -16,9 +16,8 @@
 
   <div class="page-shell">
 
-    <!-- LEFT RAIL -->
+    <!-- LEFT NAVIGATION -->
     <aside class="left-rail">
-
       <div class="site-title-block">
         <div class="site-kicker">
           <a href="index.html">
@@ -85,10 +84,9 @@
         <div class="nav-group"><a class="nav-link" href="repository.html">Repository</a></div>
         <div class="nav-group"><a class="nav-link" href="about.html">About</a></div>
       </nav>
-
       <div class="left-rail-footer">
         © ETHEL LIM<br>
-        CiD / 2025
+        CiD / 2526
       </div>
     </aside>
 
@@ -98,122 +96,303 @@
 
       <div class="catalogue-shell">
 
-        <!-- LEFT COLUMN TEXT -->
+        <!-- LEFT COLUMN -->
         <section class="catalogue-sidebar">
           <h1 style="font-size: 100px; line-height: 80px; font-weight: bold; letter-spacing: -10px; margin-top: 10px;">
-            Catal<span style="color: red; font-size: 70px; margin-right: -12px;">◉</span>gue of Making</h1>
-          <p style="margin-top: -30px;">A working index of experiments (<strong>E</strong>) and prototypes
-            (<strong>P</strong>).
-            Hover over the circles to reveal each making, and click to open its documentation page.<br>Use the filters
-            in the bottom-left corner to isolate <em>Experiments</em> or <em>Prototypes</em>.
+            Catal<span style="color: red; font-size: 70px; margin-right: -12px;">◉</span>gue</h1>
+          <p class="detail-summary" style="margin-top: -30px;">
+            A structured index of experiments and prototypes that document the iterative development of <strong>A-I:
+              Algorithmic Identities</strong>.<br>This catalogue traces how ideas are tested, refined, and translated
+            into systems, revealing the progression from early explorations to final outcomes.
           </p>
         </section>
 
 
-        <!-- RIGHT COLUMN — PREVIEW + CIRCLES -->
-        <section class="catalogue-main">
+        <!-- RIGHT COLUMN (2×2 FLEX GRID WITH INDEPENDENT ACCORDIONS) -->
+        <section class="catalogue-main" style="margin-top: -70px;">
 
-          <!-- CENTERED HOVER PREVIEW -->
-          <div id="circlePreview" class="circle-preview"></div>
 
-          <!-- RANDOM CIRCLES -->
-          <div class="catalogue-circles" id="catalogueCircles">
+          <!-- ROW 1: BOOKS • ARTICLES -->
+          <div class="repo-row">
 
-            <!-- EXPERIMENTS -->
-            <div class="catalogue-circle" data-type="experiment" data-target="experiments/experiment-1.html"
-              data-preview="assets/videos/e1-hover.mp4" data-caption="E-1 — Playlist Visualiser">
-              E-1
+            <!-- BOOKS -->
+            <div class="repo-col">
+              <div class="repo-box">
+                <button class="repo-toggle">
+                  <span>Experiments</span>
+                  <span class="repo-toggle-symbol">+</span>
+                </button>
+
+                <div class="repo-content">
+                  <a href="experiments/experiment-1.html" class="repo-item"
+                    style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/e1-com.png" alt="">
+                    <div>
+                      <h3><strong>Playlist Visualiser</strong></h3>
+                      <p class="repo-author"><em>Experiment 1</em></p>
+                      <p class="repo-desc">Translates a Spotify playlist into a composite visual identity. The system
+                        extracts features from the uploaded playlist URL and transforms them into a shifting field of
+                        orbs to visualise listening habits. It reveals how personal taste becomes encoded as data, fluid
+                        in appearance yet shaped by the simplifying logic of algorithmic classification.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="experiments/experiment-2.html" class="repo-item"
+                    style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/e2-com.png" alt="">
+                    <div>
+                      <h3><strong>Text Reduction</strong></h3>
+                      <p class="repo-author"><em>Experiment 2</em></p>
+                      <p class="repo-desc">Converts what users type into shifting arrangements of circles, blocks,
+                        triangles, and lines. Reduces meaningful language into these simplified shapes, mirroring how
+                        algorithmic systems strip human expression of nuance and encode it into machine-readable
+                        categories. Each input creates a visual that reflects not what the user writes, but how the
+                        system classifies them.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="experiments/experiment-3.html" class="repo-item"
+                    style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/e3-com.png" alt="">
+                    <div>
+                      <h3><strong>Typographic Network</strong></h3>
+                      <p class="repo-author"><em>Experiment 3</em></p>
+                      <p class="repo-desc">Explains how algorithms use our clicks, searches, and
+                        behaviours to classify us; shaping what we see, how we’re profiled, and
+                        who we become online. It shows that algorithmic identities are
+                        constructed for institutional use, not personal benefit, revealing how
+                        companies define our categories, opportunities, and realities with
+                        little transparency or control.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="experiments/experiment-4.html" class="repo-item"
+                    style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/e4-com.png" alt="">
+                    <div>
+                      <h3><strong>Text Constellation</strong></h3>
+                      <p class="repo-author"><em>Experiment 4</em></p>
+                      <p class="repo-desc">Transforms user-typed words into a field of drifting letters connected by
+                        thin vector lines. As the characters scatter, they remain tethered, echoing how digital traces
+                        disperse, yet remain networked beneath the surface. This experiment highlights the hidden
+                        infrastructures that bind scattered data into meaning.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="experiments/experiment-5.html" class="repo-item"
+                    style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/e5-com.png" alt="">
+                    <div>
+                      <h3><strong>Input Flux</strong></h3>
+                      <p class="repo-author"><em>Experiment 5</em></p>
+                      <p class="repo-desc">Typographic and classification experiment where user-entered words split into
+                        drifting letters that the system automatically sorts into nine data boxes. Over time, these
+                        boxes form an archive the user can see but cannot influence, echoing how platforms break down
+                        expression into data and reclassify it algorithmically.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="experiments/experiment-6.html" class="repo-item"
+                    style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/e6-com.png" alt="">
+                    <div>
+                      <h3><strong>From Gesture to Signal</strong></h3>
+                      <p class="repo-author"><em>Experiment 6</em></p>
+                      <p class="repo-desc">Hand-tracking, translating movement into data that the system classifies as
+                        an "open" or "closed" gesture. Each classification triggers a new sentence about surveillance,
+                        datafication, which is then reconstructed as a field of 3D particles. The viewer's gesture
+                        becomes the mechanism that activates and rearranges these statement.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="experiments/experiment-7.html" class="repo-item"
+                    style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/e7-com.png" alt="">
+                    <div>
+                      <h3><strong>ID://ASCII</strong></h3>
+                      <p class="repo-author"><em>Experiment 7</em></p>
+                      <p class="repo-desc">Live camera captures the user’s silhouette and reconstructs it as a mosaic
+                        made solely from those characters. Displayed beside the real-time reflection, the ASCII version
+                        reveals how algorithms compress rich human presence, showing how our digital selves are
+                        continuously shaped, limited, and reassembled from the traces we leave behind.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="experiments/experiment-8.html" class="repo-item"
+                    style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/e8-com.png" alt="">
+                    <div>
+                      <h3><strong>Identity Contagion</strong></h3>
+                      <p class="repo-author"><em>Experiment 8</em></p>
+                      <p class="repo-desc">Exploring how identity is progressively formed within a system through
+                        accumulated keyboard interactions. It focuses on how repeated micro-actions such as key press
+                        can contribute incrementally to how a system constructs and recognises a user. with every
+                        interaction, the identity becomes increasingly visible,
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <div class="catalogue-circle" data-type="experiment" data-target="experiments/experiment-2.html"
-              data-preview="assets/videos/e2-hover.mp4" data-caption="E-2 — Text Reduction">
-              E-2
+
+            <!-- ARTICLES -->
+            <div class="repo-col">
+              <div class="repo-box">
+                <button class="repo-toggle">
+                  <span>Prototypes</span>
+                  <span class="repo-toggle-symbol">+</span>
+                </button>
+
+                <div class="repo-content">
+                  <a href="prototypes/prototype-1.html" class="repo-item" style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/p1-com.png" alt="">
+                    <div>
+                      <h3><strong>Feed Your Garden</strong></h3>
+                      <p class="repo-author"><em>Prototype 1</em></p>
+                      <p class="repo-desc">Metaphoric approach in visualising how we "feed" our social media feeds.
+                        Every word the user type becomes a seed that the system interprets, and plants flowers that
+                        reflect the word. This metaphor mirrors how digital platforms work: every click, search, and
+                        pause becomes nourishment for the algorithm. What you "feed" it grows back toward you.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="prototypes/prototype-2.html" class="repo-item" style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/p2-com.png" alt="">
+                    <div>
+                      <h3><strong>Encode Shape</strong></h3>
+                      <p class="repo-author"><em>Prototype 2</em></p>
+                      <p class="repo-desc">Transforms five hand-drawn gestures into into encoded shapes. Each drawing is
+                        reduced through a sequence of algorithmic transformations from stroke to pixels, dots, and text.
+                        The system mimics how platforms record, normalise, and classify user behaviour. What begins as
+                        personal expression is flattened into machine-readable traces.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="prototypes/prototype-3.html" class="repo-item" style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/p3-com.png" alt="">
+                    <div>
+                      <h3><strong>Algorithmic Resonance</strong></h3>
+                      <p class="repo-author"><em>Prototype 3</em></p>
+                      <p class="repo-desc">Expansion of Experiment 1 (Playlist Visualiser). It explores how a single
+                        piece of music can split into two distinct patterns, depending on who, or what, is interpreting
+                        it. These patterns reveal the tension between subjective sensing, and computational
+                        classification. It offers a glimspe into how identity shifts when lived experience meets
+                        data-driven logic.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="prototypes/prototype-4.html" class="repo-item" style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/p4-com.png" alt="">
+                    <div>
+                      <h3><strong>Reconstructed Self</strong></h3>
+                      <p class="repo-author"><em>Prototype 4</em></p>
+                      <p class="repo-desc">Examines how algorithmic identities are constructed from the smallest actions
+                        we make online. Users must choose three ASCII characters, and those characters become the only
+                        vocabulary the system is allowed to use. It mirrors the quiet but powerful ways algorithms
+                        construct our digital identities from small, seemingly insignificant choices of tiny inputs.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="prototypes/prototype-5.html" class="repo-item" style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/p5-com.png" alt="">
+                    <div>
+                      <h3><strong>World of Brainrot</strong></h3>
+                      <p class="repo-author"><em>Prototype 5</em></p>
+                      <p class="repo-desc">Interactive webpage where users are to repeatedly select content they
+                        recognise or feel drawn to. At first, the experience feels playful, but beneath the surface, the
+                        system is constantly recording behaviour: what is clicked, how often, and in what patterns.
+                        These data are being translated into an identity portrait of themselves.
+                      </p>
+                    </div>
+                  </a>
+
+                  <a href="prototypes/prototype-6.html" class="repo-item" style="text-decoration:none; color:inherit;">
+                    <img src="assets/images/p6-com.png" alt="">
+                    <div>
+                      <h3><strong>Face Value</strong></h3>
+                      <p class="repo-author"><em>Prototype 6</em></p>
+                      <p class="repo-desc">Participants are decomposed into measurable landmarks such as eyes, nose,
+                        mouth. Each translated into coordinate points and bounding boxes. What appears on the screen is
+                        not simply a facial overlay. It is a computational breakdown of detection → landmark mapping →
+                        value extraction → categorisation.
+                      </p>
+                    </div>
+                  </a>
+
+                </div>
+              </div>
             </div>
 
-            <div class="catalogue-circle" data-type="experiment" data-target="experiments/experiment-3.html"
-              data-preview="assets/videos/e3-hover.mp4" data-caption="E-3 — Typographic Network">
-              E-3
-            </div>
+          </div>
+          <!-- END ROW 1 -->
 
-            <div class="catalogue-circle" data-type="experiment" data-target="experiments/experiment-4.html"
-              data-preview="assets/videos/e4-hover.mp4" data-caption="E-4 — Text Constellation">
-              E-4
-            </div>
+          <!-- ROW 3: MEDIA -->
+          <div class="repo-row">
 
-            <div class="catalogue-circle" data-type="experiment" data-target="experiments/experiment-5.html"
-              data-preview="assets/videos/e5-hover.mp4" data-caption="E-5 — Input Flux">
-              E-5
-            </div>
+            <!-- MEDIA -->
+            <div class="repo-col">
+              <div class="repo-box">
+                <button class="repo-toggle">
+                  <span>Final Prototype</span>
+                  <span class="repo-toggle-symbol">+</span>
+                </button>
 
-            <div class="catalogue-circle" data-type="experiment" data-target="experiments/experiment-6.html"
-              data-preview="assets/videos/e6-hover.mp4" data-caption="E-6 — From Gesture to Signal">
-              E-6
-            </div>
-
-            <div class="catalogue-circle" data-type="experiment" data-target="experiments/experiment-7.html"
-              data-preview="assets/videos/e7-hover.mp4" data-caption="E-7 — ID://ASCII">
-              E-7
-            </div>
-
-            <div class="catalogue-circle" data-type="experiment" data-target="experiments/experiment-8.html"
-              data-preview="assets/videos/e8-hover.mp4" data-caption="E-8 — Identity Contagion">
-              E-8
-            </div>
-
-
-            <!-- PROTOTYPES -->
-            <div class="catalogue-circle" data-type="prototype" data-target="prototypes/prototype-1.html"
-              data-preview="assets/videos/p1-hover.mp4" data-caption="P-1 — Feed Your Garden">
-              P-1
-            </div>
-
-            <div class="catalogue-circle" data-type="prototype" data-target="prototypes/prototype-2.html"
-              data-preview="assets/videos/p2-visuals.mp4" data-caption="P-2 — Encode Shape">
-              P-2
-            </div>
-
-            <div class="catalogue-circle" data-type="prototype" data-target="prototypes/prototype-3.html"
-              data-preview="assets/videos/p3-hover.mp4" data-caption="P-3 — Algorithmic Resonance">
-              P-3
-            </div>
-
-            <div class="catalogue-circle" data-type="prototype" data-target="prototypes/prototype-4.html"
-              data-preview="assets/videos/p4-hover.mp4" data-caption="P-4 — Reconstructed Self">
-              P-4
-            </div>
-
-            <div class="catalogue-circle" data-type="prototype" data-target="prototypes/prototype-5.html"
-              data-preview="assets/videos/p5-hover.mp4" data-caption="P-5 — World of Brainrot">
-              P-5
-            </div>
-
-            <div class="catalogue-circle" data-type="prototype" data-target="prototypes/prototype-5.html"
-              data-preview="assets/videos/p6-hover.mp4" data-caption="P-6 — Face Value">
-              P-5
+                <div class="repo-content">
+                  <div class="repo-item">
+                    <img src="assets/images/media_social-dilemma.jpg" alt="">
+                    <div>
+                      <h3>
+                        <a href="https://youtu.be/v9EKV2nSU8w?si=ArBzQ1oQbhyBMUbD" target="_blank"
+                          style="color:inherit; text-decoration:none;">
+                          <strong>The Social Dilemma</strong> <em>Drama/Docudrama,
+                            Netflix</em>
+                        </a>
+                      </h3>
+                      <p class="repo-author"><em>Jeff Orlowski, Larissa Rhodes. 2020.</em></p>
+                      <p class="repo-desc">Tech experts from Silicon Valley sound the alarm on the
+                        dangerous impact of social networking. It shares how <strong>algorithms
+                          build psychological profiles of every user</strong>. Tech companies
+                        make money by selling users' attention, behaviour patterns, and
+                        predictability to advertisers. Every scroll, pause, like, and hesitation
+                        becomes <strong>data that trains algorithms</strong> to anticipate, and
+                        influence what people do next.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          <!-- END ROW 3 -->
 
         </section>
 
       </div>
-
-
-      <!-- FILTERS -->
-      <div class="catalogue-filters">
-        <span class="catalogue-filter is-active" data-filter="experiments">Experiments</span>
-        <span class="catalogue-filter" data-filter="prototypes">Prototypes</span>
-      </div>
-
     </main>
   </div>
 
 
-  <!-- ACCORDION JS -->
+  <!-- JS: OVERVIEW + REPO ACCORDION -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+
+      /* LEFT RAIL: SEM 1 / SEM 2 accordions */
       document.querySelectorAll(".overview-group").forEach(group => {
         const toggleBtn = group.querySelector(".nav-toggle");
         const symbol = group.querySelector(".nav-toggle-symbol");
+        const list = group.querySelector(".overview-weeks"); // optional, for maxHeight animation
 
         if (!toggleBtn || !symbol) return;
 
@@ -228,46 +407,37 @@
           symbol.textContent = isOpen ? "−" : "+";
         });
       });
-    });
 
-    const circles = document.querySelectorAll('.catalogue-circle');
-    const previewBox = document.getElementById('circlePreview');
 
-    circles.forEach(circle => {
-      circle.addEventListener("mouseenter", () => {
-        const preview = circle.dataset.preview;
+      /* REPOSITORY: Books / Articles / Case Studies / Experiments / Media */
+      document.querySelectorAll(".repo-box").forEach(box => {
+        const toggle = box.querySelector(".repo-toggle");
+        const content = box.querySelector(".repo-content");
+        const symbol = box.querySelector(".repo-toggle-symbol");
 
-        // Clear previous preview
-        previewBox.innerHTML = "";
+        if (!toggle || !content || !symbol) return;
 
-        // Detect file type
-        if (preview.endsWith(".mp4") || preview.endsWith(".webm")) {
-          const vid = document.createElement("video");
-          vid.src = preview;
-          vid.autoplay = true;
-          vid.loop = true;
-          vid.muted = true;
-          vid.playsInline = true;
-          previewBox.appendChild(vid);
-        } else {
-          const img = document.createElement("img");
-          img.src = preview;
-          previewBox.appendChild(img);
-        }
+        // init closed
+        content.classList.remove("open");
+        content.style.maxHeight = "0px";
+        symbol.textContent = "+";
 
-        previewBox.classList.add("show");
+        toggle.addEventListener("click", () => {
+          const isOpen = content.classList.toggle("open");
+          symbol.textContent = isOpen ? "−" : "+";
+
+          // animate height
+          if (isOpen) {
+            content.style.maxHeight = content.scrollHeight + "px";
+          } else {
+            content.style.maxHeight = "0px";
+          }
+        });
       });
 
-      circle.addEventListener("mouseleave", () => {
-        previewBox.classList.remove("show");
-        previewBox.innerHTML = "";
-      });
     });
-
-
   </script>
 
-  <script src="js/catalogue.js"></script>
 
 </body>
 
